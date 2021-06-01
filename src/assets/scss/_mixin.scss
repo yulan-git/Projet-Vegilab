@@ -1,24 +1,54 @@
 @mixin flexArrow() {
-	display: flex;
-	justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 
 @mixin flexCenter() {
-	display: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
 @mixin flexBetween() {
-	display: flex;
-	justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
+}
+
+@mixin flexCenterVertical() {
+    display: flex;
+    align-items: center;
 }
 
 @mixin absoluteCenter() {
     position: absolute;
-	left: 50%;
+    left: 50%;
     top: 50%;
     transform: translate(-50%, -50%)
+}
+
+@mixin gradient($listColor) {   
+    background: -webkit-linear-gradient($listColor);
+    background: -moz-linear-gradient($listColor);
+    background: -o-linear-gradient($listColor);
+    background: linear-gradient($listColor);  
+}
+
+@mixin rounded($radius: 0.5em) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+    @if $inset {
+        -webkit-box-shadow:inset $top $left $blur $color;
+        -moz-box-shadow:inset $top $left $blur $color;
+        box-shadow:inset $top $left $blur $color;
+    } @else {
+        -webkit-box-shadow: $top $left $blur $color;
+        -moz-box-shadow: $top $left $blur $color;
+        box-shadow: $top $left $blur $color;
+    }
 }

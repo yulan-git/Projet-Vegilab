@@ -1,0 +1,31 @@
+/* POLICES */
+@font-face {
+    font-family: 'Indie Flower';
+    src: url(../fonts/IndieFlower-Regular.ttf);
+}
+@font-face {
+    font-family: 'Caveat';
+    src: url(../fonts/Caveat-VariableFont_wght.ttf);
+}
+@font-face {
+    font-family: 'Patrick Hand';
+    src: url(../fonts/PatrickHand-Regular.ttf);
+}
+
+$Indie: 'Indie Flower';
+$Caveat: 'Caveat';
+$Patrick: 'Patric Hand';
+
+
+/* COULEURS */
+$green:#6EB37C;
+$pink: #FFB8C2;
+$darkPink: #B34454;
+$lightRose:#FAEBED;
+$lightYellow: #FFF4D1;
+
+/*GRADIENT COLOR LIST*/
+$gradientLogo: #fff, $lightRose;
+
+
+

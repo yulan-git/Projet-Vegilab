@@ -1,0 +1,35 @@
+<div class="nav-container">
+    <div class="navbar-header">
+        <a [routerLink]="['/home']">
+            <img 
+                src="../../../assets/img/logo.png" 
+                alt="Logo du site Vegilab"
+                class="logo">
+        </a>
+        <div 
+            id="nav-icon"
+            appDropdown>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <ul class="nav-menu">
+        <li class="nav-item" routerLinkActive="active">
+            <a href="#" class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">Recettes</a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">Planning de la semaine</a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">Abonnement</a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">Connexion</a>
+        </li>
+    </ul>
+</div>
