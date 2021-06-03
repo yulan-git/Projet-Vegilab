@@ -18,7 +18,6 @@
 .logo{
     height: auto;
     width: 200px;
-    
 }
 
 /*ICON MENU BURGER*/
@@ -29,7 +28,7 @@
     width: 60px;
     height: 45px;
     position: relative;
-    margin: 35px;
+    margin: 30px;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -o-transform: rotate(0deg);
@@ -98,13 +97,11 @@
     left: 50%;
 }
 
-.nav-menu{
+#nav-menu{
     position: relative;
-    top: 112px;
-    margin: 15px 0;
+    top: 22px;
+    //margin: 15px 0;
     width: 100%;
-    
-    
 }
 
 .nav-item{
@@ -133,4 +130,10 @@
     color: v.$lightRose;
 }
 
+.show{
+    display: block;
+}
 
+.hide{
+    display: none;
+}

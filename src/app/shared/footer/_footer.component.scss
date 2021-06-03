@@ -1,0 +1,84 @@
+@use "../../../assets/scss/mixin" as m;
+@use "../../../assets/scss/variables" as v;
+
+.footer-container{
+    padding-top: 25px;
+    background-color: v.$darkPink;
+}
+.form-footer{
+    margin: 0 auto;
+    max-width: 355px;
+    display: flex;
+    flex-direction: column;
+    background-color: v.$darkPink;
+    font-family: v.$Caveat;
+    text-align: center;
+    color: v.$lightRose;
+    font-size: 35px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-input{
+    margin: 20px 10px;
+    border: none;
+    height: 45px;
+    border-radius: 7px;
+    padding: 0 10px;
+    @include m.box-shadow(0px, 5px, 5px, rgba(0, 0, 0, 0.5));
+    &::placeholder{
+        font-family: v.$Indie;
+        color: v.$darkPink;
+        font-size: 15px;
+        opacity: 0.7;
+    }
+}
+
+.form-message{
+    margin: 20px 10px;
+    border: none;
+    height: 165px;
+    border-radius: 7px;
+    padding: 0 10px;
+    @include m.box-shadow(0px, 5px, 5px, rgba(0, 0, 0, 0.5));
+    &::placeholder{
+        font-family: v.$Indie;
+        padding-top: 10px;
+        color: v.$darkPink;
+        font-size: 15px;
+        opacity: 0.7;
+    }
+}
+
+.btn-submit{
+    width: 105px;
+    height: 25px;
+    background-color: v.$lightRose;
+    color: v.$darkPink;
+    font-family: v.$Patrick;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 10px;
+}
+
+#separator{
+    content: "";
+    border: solid 1px v.$lightRose;
+    width: 260px;
+    margin: 20px auto;
+}
+
+.footer-item{
+    list-style: none;
+    padding: 15px 0;
+
+    & a{
+        text-decoration: none;
+        color: v.$lightRose;
+
+    }
+}

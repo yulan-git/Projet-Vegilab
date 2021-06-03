@@ -1,7 +1,12 @@
-@import './assets/scss/_variables';
-@import './assets/scss/_mixin';
-@import './app/home/_home.component';
-@import './app/shared/header/_header.component';
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap-grid.scss';
+
+
+
+@import './assets/scss/variables';
+@import './assets/scss/mixin';
+@import './app/home/home.component';
+@import './app/shared/header/header.component';
 
 html *{
     margin: 0;
@@ -10,6 +15,5 @@ html *{
 }
 
 body{
-    
 }
 
