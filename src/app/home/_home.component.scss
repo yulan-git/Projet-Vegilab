@@ -1,0 +1,126 @@
+@use "../../assets/scss/mixin" as m;
+@use "../../assets/scss/variables" as v;
+
+.home-container{
+    height: 1900px;
+    width: 100%;
+}
+
+.home-content{
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0;
+    background-color: white;
+    width: 100%;
+}
+
+.background-content1{
+    z-index: -1;
+    content:"";
+    position: absolute;
+    background-color: v.$lightRose;
+    width: 100%;
+    height: 600px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 60%);
+}
+
+.text-container{
+    position: absolute;
+    margin: 50px 300px;
+    text-align: center;
+
+}
+.content-title{
+}
+
+#carnet-desktop, #panier-desktop{
+    display: none;
+}
+
+.content-img{
+    width: 100%;
+    max-height: 500px;
+}
+
+.background-content2{
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 300px;
+    background-color: #B34454;
+    width: 100%;
+    height: 600px;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 50%);
+    clip-path: polygon(0% 0%, 100% 30%, 100% 70%, 0% 100%);
+}
+
+.background-content3{
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 720px;
+    background-color: #FAEBED;
+    width: 100%;
+    height: 600px;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 50%);
+    clip-path: polygon(0% 0%, 100% 30%, 100% 70%, 0% 100%);
+    transform: rotate(180deg);
+}
+
+.home-article{
+    position: relative;
+}
+
+
+
+@media (max-width: 991.98px) {
+    .background-content1, .background-content2, .background-content3{
+        display: none;
+    }
+
+    #carnet-desktop, #panier-desktop{
+        display: block;
+    }
+
+    .home-container{
+        height: auto;
+    }
+    
+    .home-content{
+        display: flex;
+        flex-direction: column;
+        font-family: v.$Caveat;
+        background-color: v.$lightRose;
+        text-align: center;
+        margin: 40px 0;
+    }
+
+    .home-article{
+        position: relative;
+    }
+
+    .content-img{
+        width: 100%;
+        max-height: 500px;
+    }
+
+    .text-container{
+        position: relative;
+        padding: 20px 35px;
+        margin: 0;
+    }
+
+    .text-content{
+        margin-top: 12px;
+        margin-bottom: 5px;
+        font-family: v.$Patrick;
+    }
+    .text-more{
+        color: v.$green;
+        font-size: 1.3rem;
+    }
+
+    #panier{
+        background-color: white;
+    }
+}

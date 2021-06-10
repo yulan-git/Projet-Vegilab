@@ -1,0 +1,39 @@
+<div class="login-background">
+    <div class="login-container">
+        <div class="login-content">
+            <div id="login-logo">
+                <a>
+                    <img src="../../assets/img/logo.png" alt="Logo du site Vegilab" [routerLink]="['/home']">
+                </a>
+            </div>
+            <div class="login-text">
+                <h2>Connectez-vous</h2>
+                <form class="login-form">
+                    <div>
+                        <input type="email" id="email" placeholder="Votre Email" class="login-input">
+                    </div>
+                    <div>
+                        <input type="password" id="password" placeholder="Votre mot de passe" class="login-input">
+                    </div>
+                    <div class="login-memory">
+                        <div>
+                            <input type="checkbox" name="memory" id="memory">
+                            <label for="memory" id="memory-label">Se souvenir de moi</label>
+                        </div>
+                        <div id="login-forget">
+                            <a href="" id="password-forget">Mot de passe oublié</a>
+                        </div>
+                    </div>
+                    <button type="submit" id="login-button">Valider</button>
+                </form>
+                <div class="login-separator"></div>
+                <p id="else">Sinon</p>
+                <a id="login-link">Inscrivez-vous!</a>
+                <div class="login-separator"></div>
+                <div class="home">
+                    <a id="home-link">Retourner</a> à l'accueil
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,254 @@
+@use "../../../../assets/scss/mixin" as m;
+@use "../../../../assets/scss/variables" as v;
+
+.container-global{
+    display: flex;
+    flex-direction: row-reverse;
+    height: 500px;
+}
+
+.footer-background{
+    width: 80%;
+}
+
+.background{
+    z-index: -1;
+    content:"";
+    position: absolute;
+    background-color: v.$darkPink;
+    width: 80%;
+    height: 500px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
+}
+
+.form-footer{
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: row-reverse;
+    font-family: v.$Caveat;
+    text-align: center;
+    color: v.$lightRose;
+    font-size: 35px;
+    justify-content: space-evenly;
+}
+
+    .form-content{
+    }
+    
+    .form-group{
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+    }
+    
+    .form-input{
+        @include m.formInput();
+    }
+    
+    .form-message{
+        margin: 20px 10px;
+        border: none;
+        height: 165px;
+        border-radius: 7px;
+        padding: 0 10px;
+        @include m.box-shadow(0px, 5px, 5px, rgba(0, 0, 0, 0.5));
+        &::placeholder{
+            font-family: v.$Indie;
+            padding-top: 10px;
+            color: v.$darkPink;
+            font-size: 15px;
+            opacity: 0.7;
+        }
+    }
+
+        .btn-submit{
+        width: 105px;
+        height: 25px;
+        background-color: v.$lightRose;
+        color: v.$darkPink;
+        font-family: v.$Patrick;
+        font-size: 15px;
+        border: none;
+        border-radius: 5px;
+        margin: 10px 10px;
+    }
+
+    
+    .footer-item{
+        display: inline-block;
+        list-style: none;
+        padding: 15px 20px;
+        font-size: 1.5rem;
+        
+        & a{
+            text-decoration: none;
+            color: v.$lightRose;
+            
+        }
+    }
+    .menu-content{
+        margin-left: 10%;
+        @include m.flexCenterVertical();
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .icons-group{
+        display: flex;
+
+        & svg{
+            margin: 15px 15px;
+        }
+}
+    
+    #footer-logo{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 20%;
+
+    & p{
+        display: block;
+        position: relative;
+        font-family: v.$Indie;
+        color: v.$darkPink;
+        top: 35%;
+    }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (max-width: 1200px) { 
+
+}
+
+@media (max-width: 991.98px) {
+    .container-global{
+    display: block;
+}
+
+    .footer-background{
+        position: static;
+        bottom: 0;
+        padding-top: 25px;
+        background-color: v.$darkPink;
+        width: 100%;
+    }
+
+    .form-footer{
+        margin: 0 auto;
+        max-width: 355px;
+        display: flex;
+        flex-direction: column;
+        background-color: v.$darkPink;
+        font-family: v.$Caveat;
+        text-align: center;
+        color: v.$lightRose;
+        font-size: 35px;
+        align-items: center;
+    }
+
+    .form-content{
+        max-width: 355px;
+    }
+    
+    .form-group{
+        display: flex;
+        flex-direction: column;
+        max-width: 320px;
+    }
+    
+    .form-input{
+        margin: 20px 10px;
+        border: none;
+        height: 45px;
+        border-radius: 7px;
+        padding: 0 10px;
+        @include m.box-shadow(0px, 5px, 5px, rgba(0, 0, 0, 0.5));
+        &::placeholder{
+            font-family: v.$Indie;
+            color: v.$darkPink;
+            font-size: 15px;
+            opacity: 0.7;
+        }
+    }
+    
+    .form-message{
+        margin: 20px 10px;
+        border: none;
+        height: 165px;
+        border-radius: 7px;
+        padding: 0 10px;
+        @include m.box-shadow(0px, 5px, 5px, rgba(0, 0, 0, 0.5));
+        &::placeholder{
+            font-family: v.$Indie;
+            padding-top: 10px;
+            color: v.$darkPink;
+            font-size: 15px;
+            opacity: 0.7;
+        }
+    }
+    
+    .btn-submit{
+        width: 105px;
+        height: 25px;
+        background-color: v.$lightRose;
+        color: v.$darkPink;
+        font-family: v.$Patrick;
+        font-size: 15px;
+        border: none;
+        border-radius: 5px;
+        margin: 10px 10px;
+    }
+    
+    #separator{
+        @include m.separator(260px);
+    }
+    
+    .footer-item{
+        list-style: none;
+        padding: 15px 0;
+    
+        & a{
+            text-decoration: none;
+            color: v.$lightRose;
+            font-size: 1.8rem;
+        }
+        & a:hover{
+            text-decoration: none;
+            color: v.$green;
+        }
+    }
+
+#footer-menu{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .icons-group{
+        padding: 20px;
+    
+        & svg{
+            margin: 0 15px;
+        }
+    }
+    
+    #footer-logo{
+        margin-top: 40px;
+        width: 100%;
+        position: relative;
+    
+        & p{
+            margin-top: 40px;
+            margin-bottom: 5px;
+            font-family: v.$Indie;
+            color: v.$darkPink;
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .form-group{
+        max-width: 400px;
+    }
+}

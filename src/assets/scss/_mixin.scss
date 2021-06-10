@@ -1,3 +1,5 @@
+@use "../../assets/scss/variables" as v;
+
 @mixin flexArrow() {
     display: flex;
     justify-content: space-around;
@@ -51,4 +53,40 @@
         -moz-box-shadow: $top $left $blur $color;
         box-shadow: $top $left $blur $color;
     }
+}
+
+@mixin button(){
+    width: 105px;
+    height: 25px;
+    background-color: v.$lightRose;
+    color: v.$darkPink;
+    font-family: v.$Patrick;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 10px;
+    cursor: pointer;
+}
+
+@mixin formInput(){
+        margin: 20px 10px;
+        border: none;
+        height: 45px;
+        border-radius: 7px;
+        padding: 0 10px;
+        @include box-shadow(0px, 5px, 5px, rgba(0, 0, 0, 0.5));
+        &::placeholder{
+            font-family: v.$Indie;
+            color: v.$darkPink;
+            font-size: 15px;
+            opacity: 0.7;
+        }
+}
+
+@mixin separator($width){
+    content: "";
+    height: 1pt;
+    background-color: v.$lightRose;
+    width: $width;
+    margin: 20px auto;
 }

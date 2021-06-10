@@ -6,7 +6,10 @@
 @import './assets/scss/variables';
 @import './assets/scss/mixin';
 @import './app/home/home.component';
-@import './app/shared/header/header.component';
+@import './app/shared/layout/header/header.component';
+@import './app/shared/layout/footer/footer.component';
+@import './app/shared/newletters/newletters.component.scss';
+
 
 html *{
     margin: 0;
@@ -15,5 +18,7 @@ html *{
 }
 
 body{
+    margin: 0;
+    height: 100%;
 }
 
