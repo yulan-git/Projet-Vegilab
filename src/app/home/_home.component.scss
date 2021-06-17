@@ -2,14 +2,13 @@
 @use "../../assets/scss/variables" as v;
 
 .home-container{
-    height: 1900px;
+    height: 1800px;
     width: 100%;
 }
 
 .home-content{
     display: flex;
     flex-direction: column;
-    margin: 50px 0;
     background-color: white;
     width: 100%;
 }
@@ -26,14 +25,58 @@
 
 .text-container{
     position: absolute;
-    margin: 50px 300px;
+    margin: 50px 200px;
     text-align: center;
+    font-family: v.$Caveat;
+
+    & h2{
+        font-size: 4.3rem;
+        margin-bottom: 15px;
+    }
+    & .text-content{
+        font-size: 1.6rem;
+        margin-bottom: 5px;
+    }
+
+    & .text-more{
+        font-size: 1.4rem;
+        color: v.$green;
+        cursor: pointer;
+    }
 
 }
-.content-title{
+
+#text-container1{
+    position: absolute;
+    top: 10px;
 }
 
-#carnet-desktop, #panier-desktop{
+#text-container2{
+    position: absolute;
+    width: 1000px;
+    top: 420px;
+    left: 13%;
+}
+
+#text-container3{
+    position: absolute;
+    width: 1000px;
+    top: 795px;
+    right: 15%;
+}
+
+#panier-desktop{
+    width: 300px;
+    position: absolute;
+    top: 717px;
+    left: 82%;
+}
+#carnet-desktop{
+    width: 300px;
+    position: absolute;
+    top: 310px;
+}
+#carnet-mobile, #panier-mobile{
     display: none;
 }
 
@@ -47,11 +90,11 @@
     content: "";
     position: absolute;
     top: 300px;
-    background-color: #B34454;
+    background-color: white;
     width: 100%;
-    height: 600px;
+    height: 500px;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 50%);
-    clip-path: polygon(0% 0%, 100% 30%, 100% 70%, 0% 100%);
+    clip-path: polygon(0% 0%, 100% 35%, 100% 100%, 0% 100%);
 }
 
 .background-content3{
@@ -61,9 +104,9 @@
     top: 720px;
     background-color: #FAEBED;
     width: 100%;
-    height: 600px;
+    height: 500px;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 50%);
-    clip-path: polygon(0% 0%, 100% 30%, 100% 70%, 0% 100%);
+    clip-path: polygon(0% 0%, 100% 32%, 100% 81%, 0% 100%);
     transform: rotate(180deg);
 }
 
@@ -71,6 +114,92 @@
     position: relative;
 }
 
+@media (max-width: 1540px) {
+    .text-container{
+
+    & h2{
+        font-size: 3.5rem;
+    }
+    & .text-content{
+        font-size: 1.4rem;
+    }
+
+    & .text-more{
+        font-size: 1.2rem;
+    }
+}
+
+
+    #text-container2, #text-container3{
+        width: 800px;
+    }
+
+    #panier-desktop{
+        left:79%;
+    }
+}
+
+@media (max-width: 1400px) {
+    #panier-desktop{
+    left: 77%;
+    }
+
+    .text-container{
+        & h2{
+            font-size: 3.3rem;
+        }
+        & .text-content{
+            font-size: 1.2rem;
+        }
+
+        & .text-more{
+            font-size: 1.1rem;
+        }
+    }
+}
+
+@media (max-width: 1300px) {
+#panier-desktop{
+    left: 75%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .home-container{
+    height: 1750px;
+    }
+
+    #panier-desktop{
+    left: 74%;
+    }
+
+    #text-container2, #text-container3{
+        width: 600px;
+    }
+
+    .text-container{
+
+    & h2{
+        font-size: 2.8rem;
+    }
+    }
+}
+
+@media (max-width: 1100px) {
+        .home-container{
+    height: 1700px;
+    }
+
+    #panier-desktop{
+    left: 72%;
+    }
+    }
+
+@media (max-width: 1000px) {
+    #panier-desktop{
+    left: 71%;
+    }
+}
 
 
 @media (max-width: 991.98px) {
@@ -79,11 +208,15 @@
     }
 
     #carnet-desktop, #panier-desktop{
+        display: none;
+    }
+
+    #carnet-mobile, #panier-mobile{
         display: block;
     }
 
     .home-container{
-        height: auto;
+        height: 1000px;
     }
     
     .home-content{
@@ -92,7 +225,7 @@
         font-family: v.$Caveat;
         background-color: v.$lightRose;
         text-align: center;
-        margin: 40px 0;
+        margin-bottom: 40px;
     }
 
     .home-article{
@@ -104,22 +237,46 @@
         max-height: 500px;
     }
 
+    #panier-mobile, #carnet-mobile {
+        position: relative;
+    }
+
     .text-container{
         position: relative;
         padding: 20px 35px;
         margin: 0;
     }
-
+    
+    #text-container1, #text-container2, #text-container3{
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
     .text-content{
         margin-top: 12px;
         margin-bottom: 5px;
         font-family: v.$Patrick;
     }
-    .text-more{
-        color: v.$green;
-        font-size: 1.3rem;
+    .home-container{
+    height: auto;
     }
 
+    .text-container{
+
+    & h2{
+        font-size: 1.7rem;
+    }
+
+        & .text-content{
+        font-size: 1rem;
+    }
+
+    & .text-more{
+        font-size: 0.9rem;
+    }
+
+    }
     #panier{
         background-color: white;
     }

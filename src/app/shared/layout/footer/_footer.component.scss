@@ -1,6 +1,9 @@
 @use "../../../../assets/scss/mixin" as m;
 @use "../../../../assets/scss/variables" as v;
 
+.news-container{
+    position: relative;
+}
 .container-global{
     display: flex;
     flex-direction: row-reverse;
@@ -33,6 +36,7 @@
 }
 
     .form-content{
+        max-width: 450px;
     }
     
     .form-group{
@@ -62,15 +66,7 @@
     }
 
         .btn-submit{
-        width: 105px;
-        height: 25px;
-        background-color: v.$lightRose;
-        color: v.$darkPink;
-        font-family: v.$Patrick;
-        font-size: 15px;
-        border: none;
-        border-radius: 5px;
-        margin: 10px 10px;
+        @include m.buttonPink();
     }
 
     
@@ -117,10 +113,6 @@
     }
 }
 
-// X-Large devices (large desktops, 1200px and up)
-@media (max-width: 1200px) { 
-
-}
 
 @media (max-width: 991.98px) {
     .container-global{
@@ -148,9 +140,6 @@
         align-items: center;
     }
 
-    .form-content{
-        max-width: 355px;
-    }
     
     .form-group{
         display: flex;

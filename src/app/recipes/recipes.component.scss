@@ -1,0 +1,156 @@
+@use "../../assets/scss/variables" as v;
+@use "../../assets/scss/mixin" as m;
+
+.recipe-container{
+    position: relative;
+}
+
+h2.title-content{
+    @include m.contentTitle(v.$darkPink);
+}
+
+.lookFor-container{
+    height: auto;
+}
+
+.lookFor-content{
+    padding-bottom: 30px;
+    background-color: v.$lightYellow;
+    display: flex;
+    flex-direction: column;
+    @include m.flexCenter();
+}
+
+.input-group{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.search-form{
+    display: inline-flex;
+    line-height: 35px;
+    margin-bottom: 30px;
+}
+.search-input{
+    height: 40px;
+    border-radius: 5px 0 0 5px;
+    border: none;
+    min-width: 245px;
+
+    &::placeholder{
+        font-family: v.$Patrick;
+        padding-left: 10px;
+        font-size: 1.1rem;
+        color: v.$gray;
+        opacity: 0.7;
+    }
+}
+
+.search-button{
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    border-radius: 0 5px 5px 0;
+    background-color: v.$darkPink;
+    border: none;
+    border-left: none;
+}
+
+#ingredients-input{
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+    width: 155px;
+    margin-top: 10px;
+    margin-left: 10px;
+
+    &::placeholder{
+        padding-left: 7px;
+        font-family: v.$Patrick;
+        font-size: 1.1rem;
+        opacity: 0.7;
+        color: v.$green;
+    }
+}
+
+.dropdown {
+    margin: 10px 10px;
+    position: relative;
+    display: inline-block;
+    background-color: white;
+    height: 30px;
+    border-radius: 5px;
+    width: 155px;
+    color: v.$gray;
+    padding-left: 7px;
+    font-family: v.$Patrick;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    & span{
+        opacity: 0.7;
+    }
+    & svg{
+        opacity: 0.7;
+        margin-top: 8px;
+        margin-right: 7px;
+    }
+}
+
+.dropdown-content {
+    top: 19px;
+    right: 1px;
+    display: none;
+    position: absolute;
+    background-color: white;
+    width: 155px;
+    box-shadow: 0px 2px 8px 0px v.$green;
+    margin: 12px 0px;
+    z-index: 1;
+    font-family: v.$Patrick;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    
+    & ul li{
+        color: black;
+        padding: 3px 7px;
+            list-style: none;
+            opacity: 0.7;
+            &:hover, &:active{
+                background-color: v.$green;
+                color: white;
+                border-radius: 5px;
+            }
+            
+        }
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#btn-lookFor{
+    @include m.buttonGreen();
+}
+
+.recipe-content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+    margin-bottom: 50px;
+    height: auto;
+}
+
+
+@media (max-width: 991.98px) {
+  .input-group{
+      display: none;
+  }
+}
+
+@media (max-width: 576px) {
+
+}

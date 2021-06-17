@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recipes.component.scss']
 })
 export class RecipesComponent implements OnInit {
+  slideIndex = 0;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

@@ -78,7 +78,7 @@
     }
 
     #login-button{
-      @include m.button();
+      @include m.buttonPink();
     }
 
     #memory{
@@ -221,7 +221,7 @@
     }
 
     #login-button{
-      @include m.button();
+      @include m.buttonPink();
     }
   }
 @media (max-width: 575.98px) {

@@ -55,7 +55,7 @@
     }
 }
 
-@mixin button(){
+@mixin buttonPink(){
     width: 105px;
     height: 25px;
     background-color: v.$lightRose;
@@ -66,6 +66,25 @@
     border-radius: 5px;
     margin: 10px 10px;
     cursor: pointer;
+}
+
+@mixin buttonGreen(){
+    width: 165px;
+    height: 32px;
+    background-color: white;
+    color: v.$green;
+    font-family: v.$Patrick;
+    font-size: 20px;
+    border: solid 1pt v.$green;
+    border-radius: 5px;
+    margin: 10px 10px;
+    cursor: pointer;
+
+    &:hover{
+        color: white;
+        background-color: v.$green;
+        opacity: 0.7;
+    }
 }
 
 @mixin formInput(){
@@ -89,4 +108,12 @@
     background-color: v.$lightRose;
     width: $width;
     margin: 20px auto;
+}
+
+@mixin contentTitle($color){
+        font-family: v.$Caveat;
+        font-size: 3.2rem;
+        color: $color;
+        margin: 20px 0;
+        text-align: center;
 }

@@ -1,0 +1,62 @@
+@use "../../assets/scss/mixin" as m;
+@use "../../assets/scss/variables" as v;
+
+.card-container{
+  width: 365px;
+  height: 400px;
+  @include m.box-shadow(4px, 4px, 6px, v.$darkPink);
+  border-radius: 10px;
+  margin: 50px;
+}
+
+.image-content{
+}
+
+.card-image{
+  width: 365px;
+  height: 260px;
+  border-radius: 10px 10px 0 0;
+}
+
+.card-content{
+  height: 140px;
+  background-color: v.$lightRose;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-title{
+  margin: 15px 0;
+  text-align: center;
+  font-size: 1.3rem;
+  color: v.$darkPink;
+  font-family: v.$Indie;
+  
+  & a{
+    cursor: pointer;
+  }
+}
+
+.see-recipe{
+  font-size: 0.9rem;
+  font-family: v.$Indie;
+  color: v.$green;
+  text-align: right;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.card-icons{
+  margin: 5px;
+  text-align: right;
+  
+  & svg{
+    padding: 5px;
+  }
+}
+
+@media (max-width: 991.98px) {
+
+}
