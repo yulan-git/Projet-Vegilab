@@ -1,1 +1,139 @@
-<p>recipe-form works!</p>
+<div class="form-container">
+    <h2 class="form-title">Ajoutez votre recette</h2>
+    <div class="return">
+        <p [routerLink]="['/welcome-home']">Retour</p>
+        <span [routerLink]="['/welcome-home']">
+            <svg width="32" height="29" viewBox="0 0 29 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M27.8456 0C28.1191 0 28.3814 0.108649 28.5748 0.302046C28.7682 0.495443 28.8768 0.757746 28.8768 1.03125V10.9313C28.8768 11.6084 28.7435 12.2789 28.4843 12.9045C28.2252 13.53 27.8454 14.0985 27.3666 14.5773C26.8878 15.0561 26.3194 15.4359 25.6938 15.695C25.0682 15.9541 24.3977 16.0875 23.7206 16.0875H3.52253L10.4257 22.9886C10.6194 23.1823 10.7281 23.4449 10.7281 23.7188C10.7281 23.9926 10.6194 24.2552 10.4257 24.4489C10.2321 24.6425 9.96944 24.7513 9.69559 24.7513C9.42174 24.7513 9.15911 24.6425 8.96547 24.4489L0.302968 15.7864C0.206932 15.6906 0.130737 15.5768 0.0787488 15.4515C0.0267605 15.3262 0 15.1919 0 15.0563C0 14.9206 0.0267605 14.7863 0.0787488 14.661C0.130737 14.5357 0.206932 14.4219 0.302968 14.3261L8.55297 6.07613C8.74661 5.88248 9.00924 5.7737 9.28309 5.7737C9.55694 5.7737 9.81958 5.88248 10.0132 6.07613C10.2069 6.26977 10.3156 6.5324 10.3156 6.80625C10.3156 7.0801 10.2069 7.34273 10.0132 7.53637L3.52253 14.025H23.7206C24.5411 14.025 25.328 13.6991 25.9082 13.1189C26.4884 12.5387 26.8143 11.7518 26.8143 10.9313V1.03125C26.8143 0.757746 26.923 0.495443 27.1164 0.302046C27.3098 0.108649 27.5721 0 27.8456 0Z"
+                    fill="#6EB37C" />
+            </svg>
+        </span>
+    </div>
+    <div class="form-content">
+        <form [formGroup]="recipeForm" class="formulaire" (ngSubmit)="onSubmit()">
+                <ol class="list-container">
+                    <li>
+                        <label for="name">Nommer votre recette </label>
+                        <input 
+                        type="text" 
+                        class="name-input"
+                        formControlName="title">
+                    </li>
+                    <li>Choisir une image</li>
+                    <button class="form-button">Parcourir</button>
+                    <li>Ajouter une description</li>
+                    <textarea 
+                    name="" 
+                    id="description" 
+                    cols="30" 
+                    rows="5"
+                    formControlName="description" ></textarea>
+                    <li>Sélectionner les caractéristiques</li>
+                    <div class="input-group">
+                        <select class="select-elements" formControlName="times">
+                            <option value="" disabled selected>Temps</option>
+                            <option *ngFor="let time of times" [ngValue]="time">{{time}}
+                            </option>
+                        </select>
+                        <select class="select-elements" formControlName="difficulties">
+                            <option value="" disabled selected>Difficulté</option>
+                            <option *ngFor="let difficulty of difficulties" [ngValue]="difficulty">{{difficulty}}
+                            </option>
+                        </select>
+                        <select class="select-elements" formControlName="categories">
+                            <option value="" disabled selected>Catégories</option>
+                            <option *ngFor="let category of categories" [ngValue]="category">{{category}}
+                            </option>
+                        </select>
+                        <select class="select-elements" formControlName="costs">
+                            <option value="" disabled selected>Coût</option>
+                            <option *ngFor="let cost of costs" [ngValue]="cost">{{cost}}
+                            </option>
+                        </select>
+                    </div>
+                    <!-- <li>Ajouter les ingrédients en fonction du nombre de personne</li>
+                    <div class="ajout">
+                        <label for="nbPersonne">Nombre de personne*</label>
+                        <input 
+                        type="number" 
+                        id="nbPersonne"
+                        formControlName="personNbr">
+                    </div>
+                    <div class="ajout">
+                        <label for="">Ingrédient*</label>
+                        <input 
+                        type="text" 
+                        id="ingredients-input"
+                        formControlName="addIngredient">
+                    </div>
+                    <div class="ajout">
+                        <label for="quantite">Quantité chiffrée*</label>
+                        <input 
+                        type="number" 
+                        id="quantite"
+                        formControlName="quantity">
+                    <div class="ajout">
+                        <label for="quantite">Unité (facultatif)</label>
+                        <select class="select-elements" formControlName="unities">
+                            <option *ngFor="let unity of unities" [ngValue]="unity">{{unity}}
+                            </option>
+                        </select>
+                    </div>
+                    </div>
+                    <button class="form-button">Ajouter</button>
+                    <div id="visualisation-ingredients" class="visualisation-content">
+                        <h5>Pour 2 personnes</h5>
+                        <ul>
+                            <li>avocat<span>
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 0C5.3715 0 0 5.373 0 12C0 18.627 5.3715 24 12 24C18.6285 24 24 18.627 24 12C24 5.373 18.6285 0 12 0ZM17.5605 15.4395C17.8418 15.7208 17.9998 16.1022 17.9998 16.5C17.9998 16.8978 17.8418 17.2792 17.5605 17.5605C17.2792 17.8418 16.8978 17.9998 16.5 17.9998C16.1022 17.9998 15.7208 17.8418 15.4395 17.5605L12 14.121L8.5605 17.5605C8.42152 17.7003 8.25628 17.8112 8.07428 17.8869C7.89228 17.9626 7.69711 18.0016 7.5 18.0016C7.30289 18.0016 7.10772 17.9626 6.92572 17.8869C6.74372 17.8112 6.57848 17.7003 6.4395 17.5605C6.30008 17.4213 6.18948 17.256 6.11401 17.074C6.03854 16.8921 5.9997 16.697 5.9997 16.5C5.9997 16.303 6.03854 16.1079 6.11401 15.926C6.18948 15.744 6.30008 15.5787 6.4395 15.4395L9.879 12L6.4395 8.5605C6.15824 8.27924 6.00023 7.89776 6.00023 7.5C6.00023 7.10224 6.15824 6.72076 6.4395 6.4395C6.72076 6.15824 7.10224 6.00023 7.5 6.00023C7.89776 6.00023 8.27924 6.15824 8.5605 6.4395L12 9.879L15.4395 6.4395C15.7208 6.15824 16.1022 6.00023 16.5 6.00023C16.8978 6.00023 17.2792 6.15824 17.5605 6.4395C17.8418 6.72076 17.9998 7.10224 17.9998 7.5C17.9998 7.89776 17.8418 8.27924 17.5605 8.5605L14.121 12L17.5605 15.4395Z"
+                                        fill="#B34454" />
+                                </svg>
+                            </span></li>
+                            <li>8 feuilles de salade<span>
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 0C5.3715 0 0 5.373 0 12C0 18.627 5.3715 24 12 24C18.6285 24 24 18.627 24 12C24 5.373 18.6285 0 12 0ZM17.5605 15.4395C17.8418 15.7208 17.9998 16.1022 17.9998 16.5C17.9998 16.8978 17.8418 17.2792 17.5605 17.5605C17.2792 17.8418 16.8978 17.9998 16.5 17.9998C16.1022 17.9998 15.7208 17.8418 15.4395 17.5605L12 14.121L8.5605 17.5605C8.42152 17.7003 8.25628 17.8112 8.07428 17.8869C7.89228 17.9626 7.69711 18.0016 7.5 18.0016C7.30289 18.0016 7.10772 17.9626 6.92572 17.8869C6.74372 17.8112 6.57848 17.7003 6.4395 17.5605C6.30008 17.4213 6.18948 17.256 6.11401 17.074C6.03854 16.8921 5.9997 16.697 5.9997 16.5C5.9997 16.303 6.03854 16.1079 6.11401 15.926C6.18948 15.744 6.30008 15.5787 6.4395 15.4395L9.879 12L6.4395 8.5605C6.15824 8.27924 6.00023 7.89776 6.00023 7.5C6.00023 7.10224 6.15824 6.72076 6.4395 6.4395C6.72076 6.15824 7.10224 6.00023 7.5 6.00023C7.89776 6.00023 8.27924 6.15824 8.5605 6.4395L12 9.879L15.4395 6.4395C15.7208 6.15824 16.1022 6.00023 16.5 6.00023C16.8978 6.00023 17.2792 6.15824 17.5605 6.4395C17.8418 6.72076 17.9998 7.10224 17.9998 7.5C17.9998 7.89776 17.8418 8.27924 17.5605 8.5605L14.121 12L17.5605 15.4395Z"
+                                        fill="#B34454" />
+                                </svg>
+                            </span></li>
+                        </ul>
+                    </div>
+                    <li>Ajouter les étapes pour la préparation</li>
+                    <div class="etapes-content">
+                        <textarea 
+                        name="" 
+                        id="etapes" 
+                        cols="30" 
+                        rows="3" 
+                        placeholder="Ex: laver les tomates et les couper en rondelle"
+                        formControlName="addStep"></textarea>
+                        <button class="form-button" id="etapes-btn">Ajouter</button>
+                    </div>
+                    <div id="visualisation-etapes" class="visualisation-content">
+                        <ol>
+                            <li>Laver la tomates, la salade, les radis roses, le poivron à l’eau claire.<span>
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 0C5.3715 0 0 5.373 0 12C0 18.627 5.3715 24 12 24C18.6285 24 24 18.627 24 12C24 5.373 18.6285 0 12 0ZM17.5605 15.4395C17.8418 15.7208 17.9998 16.1022 17.9998 16.5C17.9998 16.8978 17.8418 17.2792 17.5605 17.5605C17.2792 17.8418 16.8978 17.9998 16.5 17.9998C16.1022 17.9998 15.7208 17.8418 15.4395 17.5605L12 14.121L8.5605 17.5605C8.42152 17.7003 8.25628 17.8112 8.07428 17.8869C7.89228 17.9626 7.69711 18.0016 7.5 18.0016C7.30289 18.0016 7.10772 17.9626 6.92572 17.8869C6.74372 17.8112 6.57848 17.7003 6.4395 17.5605C6.30008 17.4213 6.18948 17.256 6.11401 17.074C6.03854 16.8921 5.9997 16.697 5.9997 16.5C5.9997 16.303 6.03854 16.1079 6.11401 15.926C6.18948 15.744 6.30008 15.5787 6.4395 15.4395L9.879 12L6.4395 8.5605C6.15824 8.27924 6.00023 7.89776 6.00023 7.5C6.00023 7.10224 6.15824 6.72076 6.4395 6.4395C6.72076 6.15824 7.10224 6.00023 7.5 6.00023C7.89776 6.00023 8.27924 6.15824 8.5605 6.4395L12 9.879L15.4395 6.4395C15.7208 6.15824 16.1022 6.00023 16.5 6.00023C16.8978 6.00023 17.2792 6.15824 17.5605 6.4395C17.8418 6.72076 17.9998 7.10224 17.9998 7.5C17.9998 7.89776 17.8418 8.27924 17.5605 8.5605L14.121 12L17.5605 15.4395Z"
+                                        fill="#B34454" />
+                                </svg>
+                            </span></li>
+                            <li>Faire cuire la patate douce dans une casserole d’eau bouillante pendant 15.<span>
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 0C5.3715 0 0 5.373 0 12C0 18.627 5.3715 24 12 24C18.6285 24 24 18.627 24 12C24 5.373 18.6285 0 12 0ZM17.5605 15.4395C17.8418 15.7208 17.9998 16.1022 17.9998 16.5C17.9998 16.8978 17.8418 17.2792 17.5605 17.5605C17.2792 17.8418 16.8978 17.9998 16.5 17.9998C16.1022 17.9998 15.7208 17.8418 15.4395 17.5605L12 14.121L8.5605 17.5605C8.42152 17.7003 8.25628 17.8112 8.07428 17.8869C7.89228 17.9626 7.69711 18.0016 7.5 18.0016C7.30289 18.0016 7.10772 17.9626 6.92572 17.8869C6.74372 17.8112 6.57848 17.7003 6.4395 17.5605C6.30008 17.4213 6.18948 17.256 6.11401 17.074C6.03854 16.8921 5.9997 16.697 5.9997 16.5C5.9997 16.303 6.03854 16.1079 6.11401 15.926C6.18948 15.744 6.30008 15.5787 6.4395 15.4395L9.879 12L6.4395 8.5605C6.15824 8.27924 6.00023 7.89776 6.00023 7.5C6.00023 7.10224 6.15824 6.72076 6.4395 6.4395C6.72076 6.15824 7.10224 6.00023 7.5 6.00023C7.89776 6.00023 8.27924 6.15824 8.5605 6.4395L12 9.879L15.4395 6.4395C15.7208 6.15824 16.1022 6.00023 16.5 6.00023C16.8978 6.00023 17.2792 6.15824 17.5605 6.4395C17.8418 6.72076 17.9998 7.10224 17.9998 7.5C17.9998 7.89776 17.8418 8.27924 17.5605 8.5605L14.121 12L17.5605 15.4395Z"
+                                        fill="#B34454" />
+                                </svg>
+                            </span></li>
+                        </ol>
+                    </div>-->
+                </ol>
+                <div id="form-btn">
+                    <button class="form-button">Valider</button>
+                </div>
+        </form>
+    </div>
+</div>

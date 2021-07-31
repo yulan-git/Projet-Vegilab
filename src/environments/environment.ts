@@ -1,10 +1,22 @@
+//import firebase from "firebase";
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  production: false
-};
+// export const environment = {
+//   production: false
+//     firebaseConfig : {
+//       apiKey: "AIzaSyAJvLyyj_GUExNkeP7tPcD69_fcEWinzFU",
+//       authDomain: "vegilab.firebaseapp.com",
+//       projectId: "vegilab",
+//       storageBucket: "vegilab.appspot.com",
+//       messagingSenderId: "73509314386",
+//       appId: "1:73509314386:web:535888119badd810f2248b",
+//       measurementId: "G-C9CFVEQQET"
+//     };
+//     // Initialize Firebase
+
+// };
 
 /*
  * For easier debugging in development mode, you can import the following file

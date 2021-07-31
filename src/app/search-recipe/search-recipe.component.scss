@@ -1,0 +1,119 @@
+@use "../../assets/scss/mixin" as m;
+@use "../../assets/scss/variables" as v;
+
+
+h2.title-content{
+    @include m.contentTitle(v.$darkPink);
+}
+
+.searchFor-container{
+    height: auto;
+    margin-bottom: 100px;
+}
+
+.searchFor-content{
+    padding-bottom: 30px;
+    background-color: v.$lightYellow;
+    display: flex;
+    flex-direction: column;
+    @include m.flexCenter();
+}
+
+.input-group{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#search-form{
+    display: flex;
+    line-height: 35px;
+    margin-bottom: 30px;
+    flex-direction: column;
+    align-items: center;
+}
+
+#search-bar{
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.search-input{
+    height: 40px;
+    border-radius: 5px 0 0 5px;
+    border: none;
+    min-width: 245px;
+    font-family: v.$Patrick;
+    padding-left: 10px;
+    font-size: 1.1rem;
+    color: black;
+    
+    &::placeholder{
+        color: v.$gray;
+        opacity: 0.7;
+    }
+}
+
+.search-button{
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    border-radius: 0 5px 5px 0;
+    background-color: v.$darkPink;
+    border: none;
+    border-left: none;
+}
+
+#ingredients-input{
+    border: none;
+    height: 35px;
+    border-radius: 5px;
+    width: 155px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: v.$Patrick;
+    opacity: 0.7;
+    padding-left: 7px;
+    font-size: 1.1rem;
+    color: v.$green;
+
+    &::placeholder
+    {
+        color: v.$green;
+
+    }
+}
+
+.select-elements{
+    display: flex;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    width: 180px;
+    padding: 0 7px;
+    background-color: #fff;
+    color: v.$green;
+    margin: 10px;
+    font-family: v.$Patrick;
+    font-size: 1.1rem;
+    opacity: 0.7;
+    padding-left: 10px;
+}
+
+#btn-lookFor{
+    @include m.buttonGreen();
+}
+
+@media (max-width: 575px) {
+    #search-form{
+        display: none;
+    }
+}
+@media (max-width: 346px) {
+    #ingredients-input{
+        margin-left: 0px;
+    }
+}

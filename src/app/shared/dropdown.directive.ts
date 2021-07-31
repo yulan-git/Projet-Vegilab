@@ -10,7 +10,6 @@ export class DropdownDirective{
     //@HostBinding('class.show') isShow = false;
 
 
-
     constructor(private elRef: ElementRef,
         private renderer: Renderer2) { }
     

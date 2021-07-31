@@ -1,0 +1,192 @@
+@use "../../../assets/scss/variables" as v;
+@use "../../../assets/scss/mixin" as m;
+
+#details-container{
+    position: relative;
+}
+
+h2.title-content{
+    @include m.contentTitle(v.$darkPink);
+}
+
+.details-infos{
+    display: flex;
+    justify-content: space-around;
+    color: v.$green;
+    font-family: v.$Patrick;
+    font-size: 1.3rem;
+}
+.details-imgContent{
+    margin: 30px 0;
+    @include m.flexCenter();
+    flex-direction: column;
+    color: v.$darkPink;
+    font-family: v.$Patrick;
+    font-size: 1.2rem;
+}
+
+.details-img{
+    max-width: 600px;
+    min-width: 250px;
+    height: auto;
+}
+
+.details-icons{
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    margin-top: 20px;
+}
+
+.icon-content{
+    display: contents;
+}
+
+.details-title{
+    margin-top: 20px;
+    font-size: 1.8rem;
+    color: v.$lightRose;
+    font-family: v.$Indie;
+    background-color: v.$darkPink;
+    width: 210px;
+    padding: 6px 0;
+    text-align: center;
+}
+.details-recipe{
+    margin: 50px;
+    font-family: v.$Patrick;
+    font-size: 1.2rem;
+}
+
+#details-description{
+    margin: 30px 50px;
+}
+
+.details-block{
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+
+}
+
+.block-content{
+    margin: 10px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    
+    & div{
+        font-family: v.$Indie;
+        font-size: 1.7rem;
+    }
+}
+
+#details-instruction{
+    display: flex;
+    justify-content: space-between;
+}
+
+#vertical-ligne{
+    width: 20px;
+    content:"";
+    border-left: 1pt solid v.$darkPink;
+}
+
+#personNbr{
+    margin-top: 20px;
+    margin-left: 10px;
+    font-family: v.$Indie;
+    font-size: 1.5rem;
+
+    & span{
+        background-color: v.$green;
+        padding: 0 3px;
+    }
+}
+
+.instructions-block{
+    margin-right: 20px;
+    
+}
+
+.ingredient-item{
+    list-style: none;
+    margin: 10px 20px;
+    
+    & svg{
+        margin-right: 7px;
+    }
+}
+
+.step-item{
+    margin: 25px 20px;
+
+}
+
+@media (max-width: 991.98px) {
+
+    .details-block{
+        margin: 0px;
+    }
+    .block-content{
+        margin: 10px 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #details-instruction{
+        display: flex;
+        flex-direction: column;
+    }
+    #vertical-ligne{
+        display: none;
+    }
+    .details-img{
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .details-imgContent{
+        margin-bottom: 0px;
+    }
+    #details-description{
+        margin: 30px 0px
+    }
+    .details-infos{
+        @include m.flexCenter();
+        flex-direction: column;
+
+    }
+
+    .details-recipe{
+        margin: 20px;
+    }
+
+    .details-icons{
+        justify-content: center;
+        & svg{
+            margin:20px;
+        }
+    }
+    .icon-text{
+            display: none;
+    }
+}
+
+@media (max-width: 380px) {
+    h2.title-content{
+    font-size: 2.5rem;
+    margin-top: 0;
+}
+
+.block-content{
+    & div{
+        font-size: 1.5rem;
+    }
+}
+}

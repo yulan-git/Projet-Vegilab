@@ -1,0 +1,295 @@
+@use "./mixin" as m;
+@use "./variables" as v;
+
+.login-background{
+    background-color: v.$lightRose;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.login-container{
+    background: url('../../assets/img/login-background-xxl.jpg');
+    box-shadow: 0px 10px 12px v.$darkPink;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    position: fixed;
+    min-height: 100%;
+    min-width: 1600px;
+    @include m.absoluteCenter();
+    
+    &::after {
+        content: "";
+        background-color: white;
+        opacity: 0.3;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;   
+    }
+}
+.login-content{
+    font-family: v.$Indie;
+    color: v.$lightRose;
+    @include m.absoluteCenter();
+    width: 1200px;
+    text-align: center;
+    display: flex;
+    height: 700px;
+}
+
+#login-logo{
+    z-index: -1;
+    content:"";
+    position: absolute;
+    background-color: white;
+    width: 34%;
+    height: 700px;
+    clip-path: polygon(0% 0%, 67% 0%, 100% 100%, 0% 100%);
+    
+    & img{
+        margin-top: 70%;
+        margin-right: 15%;
+    }
+}
+
+.login-text{
+    z-index: -1;
+    content:"";
+    position: absolute;
+    background-color: v.$darkPink;
+    width: 78%;
+    height: 700px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
+    left: 255px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#login-button{
+    @include m.buttonPink();
+}
+
+#memory{
+    margin-right: 8px;
+}
+
+#login-forget {
+    margin-left: 70px;
+    
+    & a{
+        color: v.$lightRose;
+    }
+}
+
+.login-separator{
+    @include m.separator(300px);
+}
+
+.login-memory{
+    font-family: v.$Patrick;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;}
+    
+    #else{
+        font-size: 1.3rem;
+    }
+    
+    #login-link{
+        font-size: 1.3rem;
+        color: v.$green;
+        cursor: pointer;
+        
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+    
+    #home-link{
+        cursor: pointer;
+        color: v.$green;
+    }
+    
+    @media (max-width: 1200px) {
+        .login-container{
+            background: url('../../assets/img/login-background-xxl.jpg');
+            box-shadow: 0px 10px 12px v.$darkPink;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+            min-width: 1000px;
+            
+        }
+        
+        
+        .login-content{
+            width: 850px;
+        }
+        
+        #login-logo{
+            & img{
+                margin-top: 100%;
+                width: 200px;
+            }
+        }
+        
+        .login-text{
+            left: 185px;
+        }
+    }
+    @media (max-width: 992px) {
+        .login-container{
+            background: url('../../assets/img/login-background-xxl.jpg');
+            box-shadow: 0px 10px 12px v.$darkPink;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-width: 770px;
+            
+        }
+        
+        .login-content{
+            width: 650px;
+        }
+        
+        #login-logo{
+            width: 37%;
+            
+            & img{
+                margin-top: 100%;
+                padding-top: 30%;
+                width: 180px;
+            }
+        }
+        
+        .login-text{
+            left: 160px;
+        }
+        
+    }
+    
+    @media (max-width: 768.98px) {
+        .login-container{
+            background: url('../../assets/img/login-background-1400.jpg');
+            min-width: 760px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .login-content{
+            width: 550px;
+            height: auto;
+            text-align: center;
+            display: block;
+            
+        }
+        #login-logo{
+            position: static;
+            clip-path: none;
+            height: 120px;
+            width: 100%;
+            
+            & img{
+                margin-top: 20px;
+                margin-right: 0;
+                padding: 0;
+                width: 180px;
+            }
+        }
+        
+        .login-text{
+            width: 100%;
+            position: static;
+            height: auto;
+            clip-path: none;
+            padding: 20px 10px;
+        }
+        
+        #login-button{
+            @include m.buttonPink();
+        }
+        
+    }
+    @media (max-width: 575.98px) {
+        .login-container{
+            background: url('../../assets/img/login-background-1400.jpg');
+            min-width: 380px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .login-content{
+            width: 320px;
+            height: auto;
+            text-align: center;
+            display: block;
+            
+        }
+        
+        .login-separator{
+            @include m.separator(250px);
+        }
+        #login-forget a{
+            font-size: 0.9rem;
+        }
+        #memory-label{
+            font-size: 0.9rem;
+        }
+        
+        
+    }
+    @media (max-width: 375px) {
+        .login-container{
+            background: url('../../assets/img/login-background-xxl.jpg');
+            min-width: 300px;
+            min-height: 700px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .login-content{
+            width: 250px;
+        }
+        
+        #login-logo{
+            position: static;
+            clip-path: none;
+            height: 100px;
+            background-color: white;
+            width: 100%;
+            
+            & img{
+                margin-top: 15px;
+                padding: 0%;
+                width: 150px;
+            }
+        }
+        .login-separator{
+            @include m.separator(200px);
+        }
+        #login-forget{
+            margin-left: 40px;
+            & a{
+                font-size: 0.7rem;
+            }
+        }
+        
+        #memory{
+            margin-right: 5px;
+        }
+        #memory-label{
+            font-size: 0.7rem;
+        }
+        
+        
+    }

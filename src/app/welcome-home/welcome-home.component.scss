@@ -8,11 +8,58 @@
     @include m.flexCenter();
     flex-wrap: wrap;
     border-radius: 20px;
-    & a{
-        padding: 100px;
-    }
+
+}
+
+.welcome-link{
+    padding: 80px 100px;
 }
 
 .welcome-title{
     @include m.contentTitle(v.$green);
+}
+
+@media (max-width: 1470px) {
+    .welcome-content{
+            margin: 100px;
+        }
+}
+@media (max-width: 1260px) {
+    .welcome-link{
+            padding: 33px;
+        }
+}
+
+@media (max-width: 991.98px) {
+    .welcome-content{
+        margin: 50px;
+    }
+
+    .welcome-title{
+        margin: 0;
+    }
+    .welcome-link{
+        padding: 30px;
+        & a svg{
+            width: 250px;
+            height: 250px;
+        }
+}
+}
+@media (max-width: 780px) {
+    .welcome-content{
+        margin: 50px;
+    }
+    .welcome-link{
+        padding: 30px;
+        & a svg{
+            width: 180px;
+            height: 180px;
+        }
+}
+}
+@media (max-width: 450px) {
+    .welcome-title{
+        font-size: 2.3rem;
+    }
 }

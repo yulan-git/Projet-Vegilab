@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Recipe } from '../models/recipe.model';
+import { RecipeService } from '../services/recipe.service';
 
 @Component({
   selector: 'app-favorites-recipes',
@@ -6,10 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./favorites-recipes.component.scss']
 })
 export class FavoritesRecipesComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

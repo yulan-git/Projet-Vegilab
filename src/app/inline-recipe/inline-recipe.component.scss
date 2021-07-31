@@ -1,0 +1,107 @@
+@use "../../assets/scss/variables" as v;
+@use "../../assets/scss/mixin" as m;
+
+.inline-container{
+    position: relative;
+}
+
+h2.inline-title{
+    @include m.contentTitle(v.$darkPink);
+}
+
+.inline-content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+    margin-bottom: 50px;
+    height: auto;
+}
+
+.inline-icons{
+    display: flex;
+    justify-content: space-between;
+}
+
+.publish{
+    display: flex;
+    margin-left: 5%;
+    color: v.$darkPink;
+    font-family: v.$Patrick;
+    font-size: 1.6rem;
+    & span{
+        padding-right: 10px;
+        cursor: pointer;
+    }
+
+    & p{
+        cursor: pointer;
+    }
+}
+
+.return{
+    //text-align: right;
+    color: v.$green;
+    font-family: v.$Patrick;
+    font-size: 1.6rem;
+    margin-right: 5%;
+
+    &:hover{
+        text-decoration: underline;
+    }
+
+    & p {
+        cursor: pointer;
+    }
+
+    & span{
+        display: none;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .inline-container{
+    margin: 50px;
+}
+
+.inline-icons{
+    margin-top: 10px;
+}
+.publish{
+    & p {
+        display: none;
+    }
+
+    & span{
+        padding-top: 19px;
+    }
+}
+.return{
+    & p{
+        display: none;
+    }
+    
+    & span{
+        margin-top: 20px;
+        display: block;
+    }
+}
+}
+
+@media (max-width: 500px) {
+    .inline-container{
+        width: 100%;
+        margin: 10px;
+    }
+    h2.inline-title{
+        margin: 0;
+        font-size: 2.5rem;
+    }
+
+@media (max-width: 350px) {
+        h2.inline-title{
+        font-size: 2.2rem;
+    }
+}
+}

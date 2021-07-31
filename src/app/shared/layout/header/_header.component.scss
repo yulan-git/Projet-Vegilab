@@ -180,6 +180,10 @@
                 border: none;
             }
         }
+
+        .nav-item:last-child:hover{
+                background-color: v.$pink;
+        } 
         
         .active{
             background: v.$darkPink;

@@ -10,8 +10,11 @@ import { RecipeFormComponent } from "./recipe-form/recipe-form.component";
 import { RecipesComponent } from "./recipes/recipes.component";
 import { LayoutConnexionComponent } from "./shared/layout-connexion/layout-connexion.component";
 import { LayoutComponent } from "./shared/layout/layout.component";
+import { RecipeCardComponent } from "./recipes/recipe-card/recipe-card.component";
 import { SignupComponent } from "./signup/signup.component";
 import { WelcomeHomeComponent } from "./welcome-home/welcome-home.component";
+import { AuthGuard } from "./guards/auth.guard";
+import { RecipeDetailsComponent } from "./recipes/recipe-details/recipe-details.component";
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -19,18 +22,20 @@ const appRoutes: Routes = [
     { path: '', component: LayoutComponent, children: [
         { path: '', redirectTo: '/home', pathMatch: 'full' },
         { path: 'home', component: HomeComponent },
-        { path: 'recettes', component: RecipesComponent },]
+        { path: 'recettes', component: RecipesComponent },
+        { path: 'recettes/:id', component: RecipeDetailsComponent }
+    ]
     },
-    { path: '', component: LayoutConnexionComponent, children: [
-        { path: '', redirectTo: '/welcome-home', pathMatch: 'full' },
+    {
+        path: '', canActivate: [AuthGuard],component: LayoutConnexionComponent, children: [
         { path: 'welcome-home', component: WelcomeHomeComponent },
         { path: 'recettes-favorites', component: FavoritesRecipesComponent },
         { path: 'recettes-publiees', component: InlineRecipeComponent },
         { path: 'formulaire', component: RecipeFormComponent },
         { path: 'planning', component: PlanningComponent }]
     },
-    { path: 'not-found', component: NotFoundComponent},
-    { path: '**', redirectTo: '/not-found' }
+    //{ path: 'not-found', component: NotFoundComponent},
+    //{ path: '**', redirectTo: '/not-found' }
 ]
 
 @NgModule({

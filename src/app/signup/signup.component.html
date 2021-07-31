@@ -8,28 +8,78 @@
             </div>
             <div class="login-text">
                 <h2>Inscrivez-vous</h2>
-                <form class="login-form">
-                    <div class="form-content">
-                        <label for="pseudonyme">Choisissez un pseudonyme</label>
-                        <input type="text" id="pseudonyme" class="login-input">
-                    </div>
-                    <div class="form-content">
-                        <label for="email">Entrez votre email</label>
-                        <input type="email" id="email"class="login-input">
-                    </div>
+                <form
+                (ngSubmit)="onSubmit()" 
+                [formGroup]="signupForm" 
+                class="login-form">
+                <div class="form-content">
+                    <label for="email">Entrez votre email</label>
+                    <input 
+                    type="email" 
+                    d="email" 
+                    class="login-input"
+                    formControlName="email">
+                </div>
+                <div class="form-content">
+                    <label for="pseudonyme">Votre prénom</label>
+                    <input 
+                    type="text" 
+                    id="prenom" 
+                    class="login-input"
+                    formControlName="firstName">
+                </div>
+                <div class="form-content">
+                    <label for="pseudonyme">Votre nom</label>
+                    <input 
+                    type="text" 
+                    id="nom" 
+                    class="login-input"
+                    formControlName="lastName">
+                </div>
+                <div class="form-content">
+                    <label for="pseudonyme">Choisissez un pseudonyme</label>
+                    <input 
+                    type="text" 
+                    id="pseudonyme" 
+                    class="login-input"
+                    formControlName="pseudo">
+                </div>
                     <div class="form-content">
                         <label for="password">Choisissez un mot de passe</label>
-                        <input type="password" id="password" class="login-input">
-                    </div>
-                    <div class="form-content">
-                        <label for="passwordBis">Entrez de nouveau le mot de passe</label>
-                        <input type="password" id="passwordBis" class="login-input">
+                        <input 
+                        [type]="showPwd ? 'text' : 'password'" 
+                        id="password" 
+                        class="login-input"
+                        formControlName="password">
+                        <div id="eye-icon" (click)="showPassword()">
+                            <svg *ngIf="eyeIcon" [style.display]="'block'" width="22" height="16" viewBox="0 0 22 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M19.8698 6.962C20.3438 7.582 20.3438 8.419 19.8698 9.038C18.3768 10.987 14.7948 15 10.6128 15C6.4308 15 2.8488 10.987 1.3558 9.038C1.12519 8.74113 1 8.37592 1 8C1 7.62408 1.12519 7.25887 1.3558 6.962C2.8488 5.013 6.4308 1 10.6128 1C14.7948 1 18.3768 5.013 19.8698 6.962V6.962Z"
+                                        stroke="#B34454" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path
+                                        d="M10.6128 11C12.2696 11 13.6128 9.65685 13.6128 8C13.6128 6.34315 12.2696 5 10.6128 5C8.95594 5 7.61279 6.34315 7.61279 8C7.61279 9.65685 8.95594 11 10.6128 11Z"
+                                        stroke="#B34454" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            <svg *ngIf="!eyeIcon" [style.display]="'block'" width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M5.48593 14.129C3.64093 12.819 2.18093 11.115 1.35593 10.039C1.12523 9.74198 1 9.37659 1 9.0005C1 8.62441 1.12523 8.25902 1.35593 7.962C2.84893 6.013 6.43093 2 10.6129 2C12.4889 2 14.2429 2.807 15.7429 3.874"
+                                    stroke="#B34454" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M12.7428 6.88749C12.4651 6.60515 12.1342 6.3806 11.7693 6.22677C11.4044 6.07295 11.0126 5.9929 10.6166 5.99124C10.2206 5.98958 9.82813 6.06634 9.46193 6.21711C9.09572 6.36787 8.763 6.58964 8.48293 6.86964C8.20287 7.14964 7.98102 7.48231 7.83017 7.84848C7.67932 8.21464 7.60246 8.60705 7.60403 9.00307C7.60559 9.39909 7.68555 9.79088 7.83929 10.1558C7.99303 10.5208 8.21751 10.8517 8.49978 11.1295"
+                                    stroke="#B34454" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M2.61279 17L18.6128 1" stroke="#B34454" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M8.61279 15.704C9.262 15.8972 9.93544 15.9969 10.6128 16C14.7948 16 18.3768 11.987 19.8698 10.038C20.1004 9.74071 20.2255 9.37509 20.2253 8.99883C20.2252 8.62256 20.0997 8.25707 19.8688 7.96C19.3441 7.27549 18.7812 6.62112 18.1828 6"
+                                    stroke="#B34454" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
                     </div>
                     <button type="submit" id="login-button">Valider</button>
                 </form>
                 <div class="login-separator"></div>
                 <div class="home">
-                    <a id="home-link">Retourner</a> à l'accueil
+                    <a id="home-link" [routerLink]="['/home']">Retourner</a> à l'accueil
                 </div>
             </div>
         </div>

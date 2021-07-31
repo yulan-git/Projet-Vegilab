@@ -1,5 +1,5 @@
 <div class="recipe-container">
-    <div class="lookFor-container">
+    <!-- <div class="lookFor-container">
         <div class="lookFor-content">
             <h2 class="title-content">Que recherchez-vous ?</h2>
             <form action="" class="search-form">
@@ -92,23 +92,28 @@
             </div>
             <button type="submit" id="btn-lookFor">Valider</button>
         </div>
-    </div>
+    </div> -->
+    <app-search-recipe [RecipePage]="titleSearchContent"></app-search-recipe>
     <h2 class="title-content">Nouveautés</h2>
     <div class="recipe-content">
-        <div class="cards-content" *ngFor="let item of ['','','']">
-            <app-recipe-card></app-recipe-card>
+        <div class="cards-content">
+            <app-recipe-card 
+            *ngFor="let recipe of recipes; let i = index"
+            [recipe]="recipe"
+            ></app-recipe-card>
         </div>
     </div>
     <h2 class="title-content">Idées Recettes Vegan</h2>
     <div class="recipe-content">
-        <div class="cards-content" *ngFor="let item of ['','','']">
+        <div class="cards-content">
             <app-recipe-card></app-recipe-card>
         </div>
     </div>
     <h2 class="title-content">Idées Desserts</h2>
     <div class="recipe-content">
-        <div class="cards-content" *ngFor="let item of ['','','']">
-            <app-recipe-card></app-recipe-card>
+        <div class="cards-content">
+            <app-recipe-card
+            ></app-recipe-card>
         </div>
     </div>
 </div>

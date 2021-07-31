@@ -1,0 +1,79 @@
+@use "../../../assets/scss/variables" as v;
+@use "../../../assets/scss/mixin" as m;
+
+#planningForm-container{
+    @include m.flexCenter();
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+#planningForm-content {
+    padding: 30px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    max-width: 1100px;
+    width: 100%;
+    height: auto;
+    background-color: #FAEBED;
+    border-radius: 10px;
+}
+
+h2.title-content{
+    @include m.contentTitle(v.$darkPink);
+    font-size: 2.4rem;
+}
+
+.planningForm-form{
+    @include m.flexBetween();
+    min-width: 850px;
+    padding-bottom: 10px;
+}
+
+.select-elements{
+    display: flex;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    width: 180px;
+    padding: 0 7px;
+    background-color: #fff;
+    color: v.$green;
+    margin: 10px;
+
+    &::placeholder{
+        font-family: v.$Patrick;
+        padding-left: 10px;
+        font-size: 1.1rem;
+        color: v.$green;
+        opacity: 0.7;
+    }
+}
+
+.planningForm-btn{
+    @include m.buttonGreen();
+}
+
+#planningForm-see{
+    color: v.$darkPink;
+    font-family: v.$Indie;
+    font-size: 1.4rem;
+    @include m.flexBetween();
+    width: 200px;
+    margin-top: 8px;
+}
+
+@media (max-width: 991.98px) {
+.planningForm-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.planningForm-elements{
+    margin: 10px 0;
+}
+}
+

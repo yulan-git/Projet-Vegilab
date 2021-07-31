@@ -1,0 +1,209 @@
+@use "../../assets/scss/variables" as v;
+@use "../../assets/scss/mixin" as m;
+
+
+.form-container{
+    position: relative;
+}
+
+.form-content{
+    background-color: v.$lightRose;
+    padding: 30px 30px;
+    margin: 50px auto;
+    @include m.flexCenter();
+    flex-wrap: wrap;
+    border-radius: 20px;
+    min-width: 80%;
+}
+
+.form-title{
+    @include m.contentTitle(v.$darkPink);
+}
+
+.return{
+    display: flex;
+    justify-content: flex-end;
+    color: v.$green;
+    font-family: v.$Patrick;
+    font-size: 1.6rem;
+    margin-right: 5%;
+
+    &:hover{
+        text-decoration: underline;
+    }
+
+    & p {
+        cursor: pointer;
+    }
+
+    & span{
+        display: none;
+        cursor: pointer;
+    }
+}
+
+.list-container{
+    & li{
+        margin: 20px 0;
+        font-family: v.$Indie;
+        color: v.$darkPink;
+        font-size: 1.3rem;
+    }
+}
+
+.name-input{
+    width: 100%;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: v.$Patrick;
+    font-size: 1.2rem;
+}
+
+.form-button{
+    @include m.buttonGreen();
+
+}
+
+#description{
+    width: 100%;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: v.$Patrick;
+    font-size: 1.2rem;
+}
+.input-group{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.select-elements{
+    display: flex;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    width: 180px;
+    padding: 0 7px;
+    background-color: #fff;
+    color: v.$green;
+    margin: 10px;
+    font-family: v.$Patrick;
+    font-size: 1.1rem;
+    opacity: 0.7;
+    padding-left: 10px;
+}
+
+
+.ajout{
+    font-family: v.$Patrick;
+    color: v.$green;
+    font-size: 1.3rem;
+    margin: 20px 0;
+
+    & input{
+        border: none;
+        height: 30px;
+        border-radius: 5px;
+        width: 180px;
+        margin: 0 8px;
+    }
+}
+
+#dropdown-qte{
+    margin: 0 8px;
+    display: inline-block;
+    & svg{
+        margin-left: 147px;
+    }
+}
+
+#etapes{
+    width: 70%;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: v.$Patrick;
+    font-size: 1.2rem;
+
+    &::placeholder{
+        font-size: 0.9rem;
+    }
+}
+
+.etapes-content{
+    margin: 20px 0;
+    display: flex;
+}
+
+#etapes-btn{
+    position: relative;
+    margin-top: 30px;
+}
+
+#form-btn{
+    text-align: center;
+    margin-top: 70px;
+}
+
+.visualisation-content{
+    //display: none;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    & h5{
+        font-family: v.$Indie;
+    }
+    & ul li, & ol li{
+        color: black;
+        font-size: 0.9rem;
+        margin: 5px 0;
+        padding: 0 20px;
+    }
+    & ul li{
+        list-style: none;
+    }
+
+    & ul li span, & ol li span{
+        padding-left: 7px;
+    }
+}
+
+@media (max-width: 991.98px) {
+
+    #etapes{
+    width: 100%;
+    }
+
+    .return{
+    padding-right: 10px;
+    & p{
+        display: none;
+    }
+    
+    & span{
+        margin-top: 20px;
+        display: block;
+    }
+
+}
+
+.etapes-content{
+    display: flex;
+    flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 450px) {
+        h2.form-title{
+        font-size: 2.4rem;
+        margin: 0;
+    }
+}
+
