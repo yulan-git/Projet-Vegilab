@@ -13,8 +13,6 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NewlettersComponent } from './shared/newletters/newletters.component';
 import { LayoutComponent } from './shared/layout/layout.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
 import { RecipeCardComponent } from './recipes/recipe-card/recipe-card.component';
 import { FavoritesRecipesComponent } from './favorites-recipes/favorites-recipes.component';
 import { LayoutConnexionComponent } from './shared/layout-connexion/layout-connexion.component';
@@ -23,7 +21,6 @@ import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { InlineRecipeComponent } from './inline-recipe/inline-recipe.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { WelcomeHomeComponent } from './welcome-home/welcome-home.component';
-import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { RecipeDetailsComponent } from './recipes/recipe-details/recipe-details.component';
 import { RecipeService } from './services/recipe.service';
 import { StorageComponent } from './storage/storage.component';
@@ -32,6 +29,11 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { AddToPlanningFormComponent } from './recipes/add-to-planning-form/add-to-planning-form.component';
 import { SearchRecipeComponent } from './search-recipe/search-recipe.component';
+import { RecapitulatifComponent } from './recipe-form/recapitulatif/recapitulatif.component';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+//import { DelelePopupComponent } from './recipes/delele-popup/delele-popup.component';
 registerLocaleData(localeFr, 'fr');
 //import { AngularFireModule } from "@angular/fire";
 // import { environment } from "../environments/environment";
@@ -65,6 +67,8 @@ registerLocaleData(localeFr, 'fr');
     StorageComponent,
     AddToPlanningFormComponent,
     SearchRecipeComponent,
+    RecapitulatifComponent,
+    //DelelePopupComponent,
   ],
   imports: [
     BrowserModule,

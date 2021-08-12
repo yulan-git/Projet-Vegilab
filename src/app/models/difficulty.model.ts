@@ -1,4 +1,4 @@
-export interface Ingredient{
+export interface Difficulty {
     id?: number,
     name?: string
 }

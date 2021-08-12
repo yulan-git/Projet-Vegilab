@@ -1,25 +1,21 @@
-import { Ingredient } from "./ingredient.model";
-import { Injectable } from "@angular/core";
+import { AddedIngredient } from "./added-ingredient.model";
+import { Category } from "./category.model";
+import { Difficulty } from "./difficulty.model";
+import { Cost } from "./cost.model";
+import { User } from "./user.model";
 
-@Injectable({
-    providedIn: 'root'
-})
+export interface Recipe{
     
-export class Recipe{
-    
-    constructor(
-        public id_recette: number,
-        public name: string,
-        public imagePath: string,
-        public description: string,
-        public difficulty: string,
-        public category: string[],
-        public cost: string,
-        public cookingTime: number,
-        public preparationTime: number,
-        public date_publication: string,
-        public ingredients: Ingredient[],
-        public step: string[]) {
-        
-    }
+    id?: number,
+    name?: string,
+    description?: string,
+    image?: string,
+    cookingTime?: number,
+    preparationTime?: number,
+    datePublication?: number,
+    steps?: string[],
+    ingredients?: AddedIngredient[],
+    categories?: Category[],
+    cost?: Cost,
+    difficulty?: Difficulty,
 }

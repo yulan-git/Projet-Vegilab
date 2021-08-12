@@ -12,49 +12,24 @@ import { RecipeService } from 'src/app/services/recipe.service';
   styleUrls: ['./recipe-details.component.scss']
 })
 export class RecipeDetailsComponent implements OnInit {
-  recipe: Recipe;
+  recipe: any;
   id: number;
   private recSub: Subscription;
-  user: User = {
-    id_user: 1,
-    username: "floflo",
-    email: "floflo@mail.com",
-    password: "floflo56"
-  }
 
   constructor(
     private recipeService: RecipeService,
-    private router: Router,
-  private route: ActivatedRoute) { }
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.recipe);
-    
-  // this.recipe.date_publication = formatDate("d MMMM y", )
-
-    // const id = this.route.snapshot.params['id'];
-    // console.log(id);
-    
-    // console.log(this.route);
-    
-    // //const dataRecipe = this.recipeService.getRecipes();
-    // console.log(dataRecipe);
-
-    // this.recipe = dataRecipe.find(r => r.id_recette === id);
-    // const idRecipe = this.route.snapshot.params.id;
-    // this.recipeService.getRecipe(idRecipe).
-    // console.log(this.recipe)
-
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
         console.log(this.id);
-        //this.recipe = this.recipeService.getRecipe(this.id);
-        console.log(this.recipe);
-        
+        this.recipeService.getRecipe(this.id).subscribe(resp => {
+          console.log(resp);
+          this.recipe = resp;
+        })
       }
     )
   }
-
-
 }

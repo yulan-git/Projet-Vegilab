@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { User } from '../models/user.model';
+import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-welcome-home',
@@ -6,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welcome-home.component.scss']
 })
 export class WelcomeHomeComponent implements OnInit {
-
-  constructor() { }
+  currentUserId: number;
+  user: any;
+  userSub: Subscription;
+  constructor(private userService: UserService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.currentUserId = this.authService.getUserId();
+    this.userService.getUserById(this.currentUserId).subscribe(resp => {
+      console.log(resp);
+      this.user = resp;
+    })
   }
-
 }

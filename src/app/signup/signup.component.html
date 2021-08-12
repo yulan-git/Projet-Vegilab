@@ -13,36 +13,20 @@
                 [formGroup]="signupForm" 
                 class="login-form">
                 <div class="form-content">
+                    <label for="username">Entrez votre pseudonyme</label>
+                    <input 
+                    type="username" 
+                    d="username" 
+                    class="login-input"
+                    formControlName="username">
+                </div>
+                <div class="form-content">
                     <label for="email">Entrez votre email</label>
                     <input 
-                    type="email" 
-                    d="email" 
+                    type="text" 
+                    id="email" 
                     class="login-input"
                     formControlName="email">
-                </div>
-                <div class="form-content">
-                    <label for="pseudonyme">Votre prénom</label>
-                    <input 
-                    type="text" 
-                    id="prenom" 
-                    class="login-input"
-                    formControlName="firstName">
-                </div>
-                <div class="form-content">
-                    <label for="pseudonyme">Votre nom</label>
-                    <input 
-                    type="text" 
-                    id="nom" 
-                    class="login-input"
-                    formControlName="lastName">
-                </div>
-                <div class="form-content">
-                    <label for="pseudonyme">Choisissez un pseudonyme</label>
-                    <input 
-                    type="text" 
-                    id="pseudonyme" 
-                    class="login-input"
-                    formControlName="pseudo">
                 </div>
                     <div class="form-content">
                         <label for="password">Choisissez un mot de passe</label>

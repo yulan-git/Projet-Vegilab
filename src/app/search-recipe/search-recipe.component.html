@@ -33,17 +33,17 @@
                 </select>
                 <select class="select-elements" formControlName="difficulties">
                     <option value="" disabled selected>Difficulté</option>
-                    <option *ngFor="let difficulty of difficulties" [ngValue]="difficulty">{{difficulty}}
+                    <option *ngFor="let difficulty of difficulties" [ngValue]="difficulty.name">{{difficulty.name}}
                     </option>
                 </select>
                 <select class="select-elements" formControlName="categories">
                     <option value="" disabled selected>Catégories</option>
-                    <option *ngFor="let category of categories" [ngValue]="category">{{category}}
+                    <option  *ngFor="let category of categories" [ngValue]="category.name">{{category.name}}
                     </option>
                 </select>
                 <select class="select-elements" formControlName="costs">
                     <option value="" disabled selected>Coût</option>
-                    <option *ngFor="let cost of costs" [ngValue]="cost">{{cost}}
+                    <option *ngFor="let cost of costs" [ngValue]="cost.name">{{cost.name}}
                     </option>
                 </select>
             </div>

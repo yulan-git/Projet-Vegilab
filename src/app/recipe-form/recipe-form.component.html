@@ -18,7 +18,7 @@
                         <input 
                         type="text" 
                         class="name-input"
-                        formControlName="title">
+                        formControlName="name">
                     </li>
                     <li>Choisir une image</li>
                     <button class="form-button">Parcourir</button>
@@ -30,56 +30,68 @@
                     rows="5"
                     formControlName="description" ></textarea>
                     <li>Sélectionner les caractéristiques</li>
-                    <div class="input-group">
-                        <select class="select-elements" formControlName="times">
-                            <option value="" disabled selected>Temps</option>
-                            <option *ngFor="let time of times" [ngValue]="time">{{time}}
-                            </option>
-                        </select>
-                        <select class="select-elements" formControlName="difficulties">
-                            <option value="" disabled selected>Difficulté</option>
-                            <option *ngFor="let difficulty of difficulties" [ngValue]="difficulty">{{difficulty}}
-                            </option>
-                        </select>
-                        <select class="select-elements" formControlName="categories">
-                            <option value="" disabled selected>Catégories</option>
-                            <option *ngFor="let category of categories" [ngValue]="category">{{category}}
-                            </option>
-                        </select>
-                        <select class="select-elements" formControlName="costs">
-                            <option value="" disabled selected>Coût</option>
-                            <option *ngFor="let cost of costs" [ngValue]="cost">{{cost}}
-                            </option>
-                        </select>
-                    </div>
-                    <!-- <li>Ajouter les ingrédients en fonction du nombre de personne</li>
                     <div class="ajout">
-                        <label for="nbPersonne">Nombre de personne*</label>
-                        <input 
-                        type="number" 
-                        id="nbPersonne"
-                        formControlName="personNbr">
+                        <label for="preparationTime">Temps de préparation</label>
+                        <input type="number" step="5" id="preparationTime" formControlName="preparationTime">
                     </div>
                     <div class="ajout">
+                        <label for="cookingTime">Temps de cuisson</label>
+                        <input type="number" step="5" id="cookingTime" formControlName="cookingTime">
+                    </div>
+                        <div class="input-group">
+                            <!-- <select class="select-elements" formControlName="difficulties">
+                                <option value="" disabled selected>Difficulté</option>
+                                <option *ngFor="let difficulty of difficulties" [ngValue]="difficulty.id">{{difficulty.name}}
+                                </option>
+                            </select>
+                            <select class="select-elements" formControlName="categories" multiple id="select-categories">
+                                <option value="" disabled selected>Catégories</option>
+                                <option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}
+                                </option>
+                            </select> -->
+                            <select class="select-elements" formControlName="costs">
+                                <option value="" disabled selected>Coût</option>
+                                <option *ngFor="let cost of costs" [ngValue]="cost.id">{{cost.name}}
+                                </option>
+                            </select>
+                        </div>
+                    <!-- <li>Ajouter les ingrédients en fonction du nombre de personne</li> -->
+                    <!-- <div class="ajout"> -->
+                        <!-- <label for="nbPersonne">Nombre de personne*</label> -->
+                        <!-- <input  -->
+                        <!-- type="number"  -->
+                        <!-- id="nbPersonne" -->
+                        <!-- formControlName="personNbr"> -->
+                    <!-- </div> -->
+                    <!-- <div class="ajout"> -->
+                    <!-- <label for="">Ingrédient*</label> -->
+                    <!-- <select class="select-elements" formControlName="addIngredient"> -->
+                        <!-- <option value="" disabled selected>Ingrédients</option> -->
+                        <!-- <option *ngFor="let ingredient of ingredients" [ngValue]="ingredient.id">{{ingredient.name}} -->
+                        <!-- </option> -->
+                    <!-- </select> -->
+                    <!-- </div> -->
+                    <!-- <div class="ajout">
                         <label for="">Ingrédient*</label>
                         <input 
                         type="text" 
                         id="ingredients-input"
                         formControlName="addIngredient">
-                    </div>
-                    <div class="ajout">
+                    </div> -->
+                    <!-- <div class="ajout">
                         <label for="quantite">Quantité chiffrée*</label>
                         <input 
                         type="number" 
                         id="quantite"
                         formControlName="quantity">
+                    </div>
                     <div class="ajout">
                         <label for="quantite">Unité (facultatif)</label>
                         <select class="select-elements" formControlName="unities">
-                            <option *ngFor="let unity of unities" [ngValue]="unity">{{unity}}
+                            <option value="" disabled selected>Unités</option>
+                            <option *ngFor="let unity of unities" [ngValue]="unity.name">{{unity.name}}
                             </option>
                         </select>
-                    </div>
                     </div>
                     <button class="form-button">Ajouter</button>
                     <div id="visualisation-ingredients" class="visualisation-content">
@@ -100,8 +112,8 @@
                                 </svg>
                             </span></li>
                         </ul>
-                    </div>
-                    <li>Ajouter les étapes pour la préparation</li>
+                    </div> -->
+                    <!-- <li>Ajouter les étapes pour la préparation</li>
                     <div class="etapes-content">
                         <textarea 
                         name="" 
@@ -111,7 +123,7 @@
                         placeholder="Ex: laver les tomates et les couper en rondelle"
                         formControlName="addStep"></textarea>
                         <button class="form-button" id="etapes-btn">Ajouter</button>
-                    </div>
+                    </div> -->
                     <div id="visualisation-etapes" class="visualisation-content">
                         <ol>
                             <li>Laver la tomates, la salade, les radis roses, le poivron à l’eau claire.<span>
@@ -129,7 +141,7 @@
                                 </svg>
                             </span></li>
                         </ol>
-                    </div>-->
+                    </div>
                 </ol>
                 <div id="form-btn">
                     <button class="form-button">Valider</button>

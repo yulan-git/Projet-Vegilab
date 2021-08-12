@@ -1,4 +1,4 @@
-export interface Ingredient{
+export interface Unity{
     id?: number,
     name?: string
 }

@@ -25,8 +25,14 @@
             <li class="nav-item">
                 <a href="#" class="nav-link" [routerLink]="['/planning']" routerLinkActive="activeLink">Planning de la semaine</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item"  *ngIf="!isAuthenticated()">
                 <a href="#" class="nav-link" [routerLink]="['login']">Connexion</a>
+            </li>
+            <li class="nav-item"  *ngIf="isAuthenticated()">
+                <a href="#" class="nav-link" [routerLink]="['/welcome-home']" routerLinkActive="activeLink">Général</a>
+            </li>
+            <li class="nav-item" *ngIf="isAuthenticated()">
+                <a href="#" class="nav-link" (click)="logout()">Déconnexion</a>
             </li>
         </ul>
     </div>

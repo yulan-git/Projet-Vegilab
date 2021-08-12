@@ -1,105 +1,19 @@
 <div class="recipe-container">
-    <!-- <div class="lookFor-container">
-        <div class="lookFor-content">
-            <h2 class="title-content">Que recherchez-vous ?</h2>
-            <form action="" class="search-form">
-                <input type="text" class="search-input" placeholder="Rechercher">
-                <button type="submit" class="search-button">
-                    <span>
-                        <svg width="22" height="22" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M5.75268 0C8.92977 0 11.5054 2.57556 11.5054 5.75268C11.5054 7.06437 11.0663 8.27358 10.3272 9.24134L13.9653 12.8806C14.2648 13.1801 14.2648 13.6658 13.9653 13.9653C13.6888 14.2418 13.2537 14.263 12.9528 14.0291L12.8806 13.9653L9.24134 10.3272C8.27358 11.0663 7.06437 11.5054 5.75268 11.5054C2.57556 11.5054 0 8.92977 0 5.75268C0 2.57556 2.57556 0 5.75268 0ZM5.75268 1.53405C3.42279 1.53405 1.53405 3.42279 1.53405 5.75268C1.53405 8.08259 3.42279 9.97132 5.75268 9.97132C8.0826 9.97132 9.97132 8.08259 9.97132 5.75268C9.97132 3.42279 8.0826 1.53405 5.75268 1.53405Z"
-                                fill="#6EB37C" />
-                        </svg>
-                    </span>
-                </button>
-            </form>
-            <div class="input-group">
-                <input type="text" placeholder="Ingrédients" id="ingredients-input">
-                <div 
-                class="dropdown">
-                    <span>Temps</span>
-                    <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M1.82596 0.666687C1.60098 0.666743 1.38106 0.744972 1.194 0.891485C1.00695 1.038 0.86116 1.24621 0.775068 1.48981C0.688976 1.73341 0.666445 2.00146 0.710325 2.26006C0.754204 2.51867 0.862524 2.75622 1.02159 2.94269L7.84796 10.9427C8.06132 11.1926 8.35065 11.3331 8.65234 11.3331C8.95402 11.3331 9.24336 11.1926 9.45671 10.9427L16.2831 2.94269C16.4422 2.75622 16.5505 2.51867 16.5944 2.26006C16.6382 2.00146 16.6157 1.73341 16.5296 1.48981C16.4435 1.24621 16.2977 1.038 16.1107 0.891485C15.9236 0.744972 15.7037 0.666743 15.4787 0.666687H1.82596Z"
-                            fill="#6EB37C" />
-                    </svg>
-                    <div 
-                    class="dropdown-content">
-                        <ul>
-                            <li>- de 20min</li>
-                            <li>entre 20-40min</li>
-                            <li>entre 40-60min</li>
-                            <li>+ de 60min</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <span>Difficulté</span>
-                    <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M1.82596 0.666687C1.60098 0.666743 1.38106 0.744972 1.194 0.891485C1.00695 1.038 0.86116 1.24621 0.775068 1.48981C0.688976 1.73341 0.666445 2.00146 0.710325 2.26006C0.754204 2.51867 0.862524 2.75622 1.02159 2.94269L7.84796 10.9427C8.06132 11.1926 8.35065 11.3331 8.65234 11.3331C8.95402 11.3331 9.24336 11.1926 9.45671 10.9427L16.2831 2.94269C16.4422 2.75622 16.5505 2.51867 16.5944 2.26006C16.6382 2.00146 16.6157 1.73341 16.5296 1.48981C16.4435 1.24621 16.2977 1.038 16.1107 0.891485C15.9236 0.744972 15.7037 0.666743 15.4787 0.666687H1.82596Z"
-                            fill="#6EB37C" />
-                    </svg>
-                    <div class="dropdown-content">
-                        <ul>
-                            <li>Très facile</li>
-                            <li>Facile</li>
-                            <li>Moyen</li>
-                            <li>Expert</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <span>Catégorie</span>
-                    <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M1.82596 0.666687C1.60098 0.666743 1.38106 0.744972 1.194 0.891485C1.00695 1.038 0.86116 1.24621 0.775068 1.48981C0.688976 1.73341 0.666445 2.00146 0.710325 2.26006C0.754204 2.51867 0.862524 2.75622 1.02159 2.94269L7.84796 10.9427C8.06132 11.1926 8.35065 11.3331 8.65234 11.3331C8.95402 11.3331 9.24336 11.1926 9.45671 10.9427L16.2831 2.94269C16.4422 2.75622 16.5505 2.51867 16.5944 2.26006C16.6382 2.00146 16.6157 1.73341 16.5296 1.48981C16.4435 1.24621 16.2977 1.038 16.1107 0.891485C15.9236 0.744972 15.7037 0.666743 15.4787 0.666687H1.82596Z"
-                            fill="#6EB37C" />
-                    </svg>
-                    <div class="dropdown-content">
-                        <ul>
-                            <li>Entrée</li>
-                            <li>Salade</li>
-                            <li>Plat</li>
-                            <li>Dessert</li>
-                            <li>Vegan</li>
-                            <li>Veggie</li>
-                            <li>Pizza </li>
-                            <li>Pâtes</li>
-                            <li>Tartes</li>
-                            <li>Gratins</li>
-                            <li>Recette orientale</li>
-                            <li>Recette asiatique</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <span>Coût</span>
-                    <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M1.82596 0.666687C1.60098 0.666743 1.38106 0.744972 1.194 0.891485C1.00695 1.038 0.86116 1.24621 0.775068 1.48981C0.688976 1.73341 0.666445 2.00146 0.710325 2.26006C0.754204 2.51867 0.862524 2.75622 1.02159 2.94269L7.84796 10.9427C8.06132 11.1926 8.35065 11.3331 8.65234 11.3331C8.95402 11.3331 9.24336 11.1926 9.45671 10.9427L16.2831 2.94269C16.4422 2.75622 16.5505 2.51867 16.5944 2.26006C16.6382 2.00146 16.6157 1.73341 16.5296 1.48981C16.4435 1.24621 16.2977 1.038 16.1107 0.891485C15.9236 0.744972 15.7037 0.666743 15.4787 0.666687H1.82596Z"
-                            fill="#6EB37C" />
-                    </svg>
-                    <div class="dropdown-content">
-                        <ul>
-                            <li>Bon marché</li>
-                            <li>Raisonnable</li>
-                            <li>Couteux</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <button type="submit" id="btn-lookFor">Valider</button>
-        </div>
-    </div> -->
     <app-search-recipe [RecipePage]="titleSearchContent"></app-search-recipe>
     <h2 class="title-content">Nouveautés</h2>
+    <ng-template [ngIf]="seePopup" class="delete-popup">
+        <p>Êtes-vous sur de vouloir supprimer cette recette?</p>
+        <button 
+        (recipeEvent) = "onDeleteRecipe($event)"
+        >Confirmer</button>
+        <button >Annuler</button>
+    </ng-template>
     <div class="recipe-content">
         <div class="cards-content">
             <app-recipe-card 
             *ngFor="let recipe of recipes; let i = index"
             [recipe]="recipe"
+            (recipeEvent) = "onDeleteRecipe($event)"
             ></app-recipe-card>
         </div>
     </div>

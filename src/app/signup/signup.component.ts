@@ -24,29 +24,28 @@ export class SignupComponent implements OnInit {
 
   initForm() {
     this.signupForm = new FormGroup({
+      username: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      pseudo: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)])
     })
   }
 
+
   onSubmit() {
-    const formValues = this.signupForm.value;
-    console.log(formValues);
-    this.authService.signup(
-      formValues['email'],
-      formValues['firstName'],
-      formValues['lastName'],
-      formValues['pseudo'],
-      formValues['password']
-    ).subscribe(
-      (resp: any) => {
-        console.log('création ok !');
-        this.router.navigate(['/login']);
+    try {
+      const user = {
+        username: this.signupForm.value.username,
+        email: this.signupForm.value.email,
+        role: ["USER"],
+        password: this.signupForm.value.password
       }
-    )
+      this.authService.signup(user).subscribe((response) => {
+        this.router.navigate(["/login"]);
+        console.log(response, "Création réussie")
+      });
+    } catch {
+      console.log("__Error handled gracefully.")
+    }
   }
 
   showPassword() {

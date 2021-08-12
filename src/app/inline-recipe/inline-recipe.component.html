@@ -23,8 +23,11 @@
         </div>
     </div>
     <div class="inline-content">
-        <div class="cards-content" *ngFor="let item of ['','','','','','','','','']">
-            <app-recipe-card></app-recipe-card>
+        <div class="cards-content" *ngFor="let recipe of recipesList">
+            <app-recipe-card
+             *ngFor="let recipe of recipes; let i = index"
+            [recipe]="recipe"
+            (recipeEvent) = "onDeleteRecipe($event)"></app-recipe-card>
         </div>
     </div>
     <app-search-recipe></app-search-recipe>
