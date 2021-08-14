@@ -1,4 +1,3 @@
-import { AddedIngredient } from "./added-ingredient.model";
 import { Category } from "./category.model";
 import { Difficulty } from "./difficulty.model";
 import { Cost } from "./cost.model";
@@ -12,10 +11,12 @@ export interface Recipe{
     image?: string,
     cookingTime?: number,
     preparationTime?: number,
-    datePublication?: number,
+    datePublication?: any,
+    nbPerson: number,
     steps?: string[],
-    ingredients?: AddedIngredient[],
-    categories?: Category[],
+    ingredientsList?: { [name: string]: number },
+    categories?: String[],
     cost?: Cost,
     difficulty?: Difficulty,
+    user?: { [username: string]: number }
 }

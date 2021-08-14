@@ -12,15 +12,31 @@ import { RecipeService } from '../services/recipe.service';
 export class InlineRecipeComponent implements OnInit {
   recipesList: Recipe[];
   currentUserId: number;
-  private recipeSub: Subscription;
+  recipes: Recipe[];
+  data: Recipe[];
+  dataRecipes: Recipe[];
+  recipeSub: Subscription;
 
   constructor(private recipeService: RecipeService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.currentUserId = this.authService.getUserId();
-    this.recipeSub = this.recipeService.getRecipesByUserId(this.currentUserId).subscribe(resp => {
-      this.recipesList = resp
+    this.recipeSub = this.recipeService.recipeSubject.subscribe(resp => {
+      this.recipesList = resp;
+    })
+    this.recipeService.getRecipesByUserId(this.currentUserId);
+  }
+
+
+  onDeleteRecipe(id: number) {
+    this.recipeService.deleteRecipe(id).subscribe(resp => {
+      console.log('la recette  a bien été supprimée');
+      this.recipeService.getRecipesByUserId(this.currentUserId);
     });
+  }
+
+  onUpdateRecipe() {
+
   }
 
 }

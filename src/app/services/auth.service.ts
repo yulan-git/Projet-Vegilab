@@ -47,6 +47,12 @@ export class AuthService {
     return decode.id;
   }
 
+  getUserUsername(): string{
+    const token: any = this.getToken();
+    const decode = this.jwtHelper.decodeToken(token);
+    return decode.sub;
+  }
+
   getToken() {
     return localStorage.getItem('TOKEN_APPLI');
   }

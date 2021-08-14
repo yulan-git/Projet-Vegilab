@@ -1,5 +1,5 @@
 <div class="welcome-container">
-    <h2 class="welcome-title">Bienvenue {{user.username | titlecase}}</h2>
+    <h2 class="welcome-title">Bienvenue {{user | titlecase}}</h2>
     <div class="welcome-content">
         <div class="welcome-link">
             <a [routerLink]="['/recettes-favorites']">

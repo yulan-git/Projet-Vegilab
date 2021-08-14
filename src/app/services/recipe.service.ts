@@ -30,19 +30,25 @@ export class RecipeService {
   }
   
   getRecipesByUserId(userId: number) {
-    return this.http.get<Recipe[]>(`${this.API_URL}/recipes/${userId}/user`).pipe(
-      catchError(error => of([])))
+    return this.http.get<Recipe[]>(`${this.API_URL}/recipes/${userId}/user`).subscribe(resp => {
+      this.recipeSubject.next(resp)
+    })
   }
   
 
-  createRecipe(userId:number, recipe: Recipe) {
-    return this.http.post<Recipe>(`${this.API_URL}/recipes/${userId}/recipe`, recipe).pipe(
+  createRecipe(recipe: Recipe) {
+    return this.http.post<Recipe>(`${this.API_URL}/recipes`, recipe).pipe(
         catchError(error => of([])))
   }
 
   deleteRecipe(recipeId: number) {
     return this.http.delete<Recipe>(`${this.API_URL}/recipes/${recipeId}`).pipe(
         catchError(error => of([])))
+  }
+
+  updateRecipe(recipe: Recipe) {
+    return this.http.put<Recipe>(`${this.API_URL}/recipes/update`, recipe).pipe(
+      catchError(error => of([])))
   }
 
   // updateRecipe(formData: FormData) {

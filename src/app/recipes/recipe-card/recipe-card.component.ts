@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, OnDestroy, Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Recipe } from 'src/app/models/recipe.model';
 import { RecipeService } from 'src/app/services/recipe.service';
@@ -12,19 +12,28 @@ import { RecipeService } from 'src/app/services/recipe.service';
 export class RecipeCardComponent implements OnInit, OnDestroy {
   @Input() recipe: Recipe;
   @Input() index: number;
-  @Output() recipeEvent = new EventEmitter<any>();
+  @Input() isHide: boolean = true;
+  @Input() noVisible: boolean = true;
+  @Output() deleteEvent = new EventEmitter<any>();
+  @Output() updateEvent = new EventEmitter<any>();
   recipes: Recipe[];
   id: number;
   private recSub: Subscription;
   
   constructor(private recipeService: RecipeService,
-    private route: ActivatedRoute) { }
+    private router: Router) { }
 
   ngOnInit(): void {
   }
 
   recipeIdToDelete(recipeId:number) {
-    this.recipeEvent.emit(recipeId);
+    this.deleteEvent.emit(recipeId);
+    console.log(recipeId);
+    
+  }
+  recipeIdToUpdate(recipeId:number) {
+    this.updateEvent.emit(recipeId);
+    this.router.navigate(['/formulaire/', { id: recipeId }]);
   }
 
   ngOnDestroy() {

@@ -29,10 +29,9 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { AddToPlanningFormComponent } from './recipes/add-to-planning-form/add-to-planning-form.component';
 import { SearchRecipeComponent } from './search-recipe/search-recipe.component';
-import { RecapitulatifComponent } from './recipe-form/recapitulatif/recapitulatif.component';
-import { AuthInterceptor } from './interceptor/auth.interceptor';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
+import { AuthInterceptor } from './auth/interceptor/auth.interceptor';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 //import { DelelePopupComponent } from './recipes/delele-popup/delele-popup.component';
 registerLocaleData(localeFr, 'fr');
 //import { AngularFireModule } from "@angular/fire";
@@ -67,7 +66,6 @@ registerLocaleData(localeFr, 'fr');
     StorageComponent,
     AddToPlanningFormComponent,
     SearchRecipeComponent,
-    RecapitulatifComponent,
     //DelelePopupComponent,
   ],
   imports: [

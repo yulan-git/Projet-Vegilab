@@ -10,16 +10,17 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./welcome-home.component.scss']
 })
 export class WelcomeHomeComponent implements OnInit {
-  currentUserId: number;
+  currentUsername: string;
   user: any;
   userSub: Subscription;
   constructor(private userService: UserService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.currentUserId = this.authService.getUserId();
-    this.userService.getUserById(this.currentUserId).subscribe(resp => {
-      console.log(resp);
-      this.user = resp;
-    })
+    this.currentUsername = this.authService.getUserUsername();
+    this.user = this.currentUsername
+    // this.userService.getUserById(this.currentUserId).subscribe(resp => {
+    //   console.log(resp);
+    //   this.user = resp;
+    // })
   }
 }

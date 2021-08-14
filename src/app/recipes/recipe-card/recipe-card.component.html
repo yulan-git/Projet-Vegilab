@@ -9,7 +9,7 @@ class="card-container"
     </div>
     <div class="card-content">
         <h3 class="card-title"><a>{{recipe.name}}</a></h3>
-        <a 
+        <a *ngIf="noVisible"
         class="see-recipe">
             <p
             [routerLink]="[recipe.id]" 
@@ -25,8 +25,8 @@ class="card-container"
                 </svg>
             </span>
         </a>
-        <div class="card-icons">
-            <svg width="32" height="32" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="card-icons" *ngIf="isHide">
+            <svg (click)="recipeIdToUpdate(recipe.id)"width="32" height="32" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M3.18274 17.4979L1.74973 23.6825C1.70029 23.9086 1.70199 24.1429 1.75469 24.3682C1.80739 24.5935 1.90976 24.8043 2.05433 24.985C2.1989 25.1657 2.38201 25.3118 2.59029 25.4127C2.79857 25.5136 3.02675 25.5667 3.25817 25.5681C3.366 25.5789 3.47465 25.5789 3.58248 25.5681L9.80479 24.135L21.7516 12.2335L15.0843 5.58124L3.18274 17.4979Z"
                     fill="#6EB37C" />

@@ -1,40 +1,41 @@
-<div class="navbar-header">
-    <a>
-        <img 
+
+    <div class="navbar-header">
+        <a>
+            <img 
             src="../../../assets/img/logo.png" 
             alt="Logo du site Vegilab"
             class="logo"
             [routerLink]="['/home']">
-    </a>
-    <div 
-        id="nav-icon"
+        </a>
+        <div 
+        id="nav-icon" class="show"
         appDropdown>
         <span></span>
         <span></span>
         <span></span>
         <span></span>
     </div>
-    <div class="list-menu" appDropdown>
-        <ul id="nav-menu">
-            <li class="nav-item"  routerLinkActive="active">
-                <a href="#" class="nav-link" [routerLink]="['/home']" routerLinkActive="activeLink">Accueil</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a href="#" class="nav-link" [routerLink]="['/recettes']" routerLinkActive="activeLink">Recettes</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link" [routerLink]="['/planning']" routerLinkActive="activeLink">Planning de la semaine</a>
-            </li>
-            <li class="nav-item"  *ngIf="!isAuthenticated()">
-                <a href="#" class="nav-link" [routerLink]="['login']">Connexion</a>
-            </li>
-            <li class="nav-item"  *ngIf="isAuthenticated()">
-                <a href="#" class="nav-link" [routerLink]="['/welcome-home']" routerLinkActive="activeLink">Général</a>
-            </li>
-            <li class="nav-item" *ngIf="isAuthenticated()">
-                <a href="#" class="nav-link" (click)="logout()">Déconnexion</a>
-            </li>
-        </ul>
-    </div>
-</div>
+                <div class="list-menu" appDropdown>
+                    <ul id="nav-menu">
+                        <li class="nav-item"  routerLinkActive="active">
+                            <a href="#" class="nav-link" [routerLink]="['/home']" routerLinkActive="activeLink">Accueil</a>
+                        </li>
+                        <li class="nav-item" routerLinkActive="active">
+                            <a href="#" class="nav-link" [routerLink]="['/recettes']" routerLinkActive="activeLink">Recettes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" [routerLink]="['/planning']" routerLinkActive="activeLink">Planning de la semaine</a>
+                        </li>
+                        <li class="nav-item"  *ngIf="!isAuthenticated()">
+                            <a href="#" class="nav-link" [routerLink]="['login']">Connexion</a>
+                        </li>
+                        <li class="nav-item"  *ngIf="isAuthenticated()">
+                            <a href="#" class="nav-link" [routerLink]="['/welcome-home']" routerLinkActive="activeLink">Général</a>
+                        </li>
+                        <li class="nav-item" *ngIf="isAuthenticated()">
+                            <a href="#" class="nav-link" (click)="logout()">Déconnexion</a>
+                        </li>
+                    </ul>
+                </div>
 
+</div>    

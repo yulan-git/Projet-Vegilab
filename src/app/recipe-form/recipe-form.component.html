@@ -1,5 +1,6 @@
 <div class="form-container">
-    <h2 class="form-title">Ajoutez votre recette</h2>
+    <h1 *ngIf="isCreateMode" class="form-title">Ajoutez votre recette</h1>
+    <h1 *ngIf="!isCreateMode" class="form-title">Modifiez votre recette</h1>
     <div class="return">
         <p [routerLink]="['/welcome-home']">Retour</p>
         <span [routerLink]="['/welcome-home']">
@@ -32,88 +33,85 @@
                     <li>Sélectionner les caractéristiques</li>
                     <div class="ajout">
                         <label for="preparationTime">Temps de préparation</label>
-                        <input type="number" step="5" id="preparationTime" formControlName="preparationTime">
+                        <input type="number" step="5" id="preparationTime" min="0" formControlName="preparationTime">
                     </div>
                     <div class="ajout">
                         <label for="cookingTime">Temps de cuisson</label>
-                        <input type="number" step="5" id="cookingTime" formControlName="cookingTime">
+                        <input type="number" step="5" id="cookingTime" min="0" formControlName="cookingTime">
                     </div>
                         <div class="input-group">
-                            <!-- <select class="select-elements" formControlName="difficulties">
+                            <select class="select-elements" formControlName="difficulties">
                                 <option value="" disabled selected>Difficulté</option>
                                 <option *ngFor="let difficulty of difficulties" [ngValue]="difficulty.id">{{difficulty.name}}
                                 </option>
                             </select>
                             <select class="select-elements" formControlName="categories" multiple id="select-categories">
                                 <option value="" disabled selected>Catégories</option>
-                                <option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}
+                                <option *ngFor="let category of categories" [ngValue]="category.name">{{category.name}}
                                 </option>
-                            </select> -->
+                            </select>
                             <select class="select-elements" formControlName="costs">
                                 <option value="" disabled selected>Coût</option>
                                 <option *ngFor="let cost of costs" [ngValue]="cost.id">{{cost.name}}
                                 </option>
                             </select>
                         </div>
-                    <!-- <li>Ajouter les ingrédients en fonction du nombre de personne</li> -->
-                    <!-- <div class="ajout"> -->
-                        <!-- <label for="nbPersonne">Nombre de personne*</label> -->
-                        <!-- <input  -->
-                        <!-- type="number"  -->
-                        <!-- id="nbPersonne" -->
-                        <!-- formControlName="personNbr"> -->
-                    <!-- </div> -->
-                    <!-- <div class="ajout"> -->
-                    <!-- <label for="">Ingrédient*</label> -->
-                    <!-- <select class="select-elements" formControlName="addIngredient"> -->
-                        <!-- <option value="" disabled selected>Ingrédients</option> -->
-                        <!-- <option *ngFor="let ingredient of ingredients" [ngValue]="ingredient.id">{{ingredient.name}} -->
-                        <!-- </option> -->
-                    <!-- </select> -->
-                    <!-- </div> -->
+                    <li>Ajouter les ingrédients en fonction du nombre de personne</li>
+                    <div class="ajout">
+                        <label for="nbPersonne">Nombre de personne*</label>
+                        <input 
+                        type="number" 
+                        id="nbPersonne"
+                        min="0"
+                        formControlName="nbPerson"
+                        #nbPerson>
+                    </div>
                     <!-- <div class="ajout">
+                    <label for="">Ingrédient*</label>
+                    <select class="select-elements">
+                        <option value="" disabled selected>Ingrédients</option>
+                        <option  id="ingredientValue" *ngFor="let ingredient of ingredients" [ngValue]="ingredient.id" #ingredientName>{{ingredient.name}}
+                        </option>
+                    </select>
+                    </div> -->
+                    <div class="ajout">
                         <label for="">Ingrédient*</label>
                         <input 
                         type="text" 
                         id="ingredients-input"
-                        formControlName="addIngredient">
-                    </div> -->
-                    <!-- <div class="ajout">
-                        <label for="quantite">Quantité chiffrée*</label>
-                        <input 
-                        type="number" 
-                        id="quantite"
-                        formControlName="quantity">
+                        #ingredientName>
                     </div>
                     <div class="ajout">
+                        <label for="amount">Quantité chiffrée*</label>
+                        <input 
+                        min="0"
+                        type="number" 
+                        id="amount"
+                        #amount
+                        >
+                    </div>
+                    <!-- <div class="ajout">
                         <label for="quantite">Unité (facultatif)</label>
-                        <select class="select-elements" formControlName="unities">
+                        <select class="select-elements" #unity>
                             <option value="" disabled selected>Unités</option>
-                            <option *ngFor="let unity of unities" [ngValue]="unity.name">{{unity.name}}
+                            <option *ngFor="let unity of unities" [ngValue]="unity">{{unity}}
                             </option>
                         </select>
-                    </div>
-                    <button class="form-button">Ajouter</button>
-                    <div id="visualisation-ingredients" class="visualisation-content">
-                        <h5>Pour 2 personnes</h5>
+                    </div> -->
+                    <button type="button" class="form-button" (click)="addIngredientToList(ingredientName.value, amount.value, nbPerson.value)">Ajouter</button>
+                    <div [ngStyle]="!(this.ingrMap.size == 0) && isAdded && {'display': 'block'}" id="visualisation-ingredients" class="visualisation-content">
+                        <h5>Pour {{nbPerson.value}} personnes</h5>
                         <ul>
-                            <li>avocat<span>
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M12 0C5.3715 0 0 5.373 0 12C0 18.627 5.3715 24 12 24C18.6285 24 24 18.627 24 12C24 5.373 18.6285 0 12 0ZM17.5605 15.4395C17.8418 15.7208 17.9998 16.1022 17.9998 16.5C17.9998 16.8978 17.8418 17.2792 17.5605 17.5605C17.2792 17.8418 16.8978 17.9998 16.5 17.9998C16.1022 17.9998 15.7208 17.8418 15.4395 17.5605L12 14.121L8.5605 17.5605C8.42152 17.7003 8.25628 17.8112 8.07428 17.8869C7.89228 17.9626 7.69711 18.0016 7.5 18.0016C7.30289 18.0016 7.10772 17.9626 6.92572 17.8869C6.74372 17.8112 6.57848 17.7003 6.4395 17.5605C6.30008 17.4213 6.18948 17.256 6.11401 17.074C6.03854 16.8921 5.9997 16.697 5.9997 16.5C5.9997 16.303 6.03854 16.1079 6.11401 15.926C6.18948 15.744 6.30008 15.5787 6.4395 15.4395L9.879 12L6.4395 8.5605C6.15824 8.27924 6.00023 7.89776 6.00023 7.5C6.00023 7.10224 6.15824 6.72076 6.4395 6.4395C6.72076 6.15824 7.10224 6.00023 7.5 6.00023C7.89776 6.00023 8.27924 6.15824 8.5605 6.4395L12 9.879L15.4395 6.4395C15.7208 6.15824 16.1022 6.00023 16.5 6.00023C16.8978 6.00023 17.2792 6.15824 17.5605 6.4395C17.8418 6.72076 17.9998 7.10224 17.9998 7.5C17.9998 7.89776 17.8418 8.27924 17.5605 8.5605L14.121 12L17.5605 15.4395Z"
-                                        fill="#B34454" />
-                                </svg>
-                            </span></li>
-                            <li>8 feuilles de salade<span>
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <li *ngFor="let item of ingrMap | keyvalue">{{item.value}} {{item.key}}<span>
+                                <svg (click)="deleteIngredientFromRecipe(item.key)" width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M12 0C5.3715 0 0 5.373 0 12C0 18.627 5.3715 24 12 24C18.6285 24 24 18.627 24 12C24 5.373 18.6285 0 12 0ZM17.5605 15.4395C17.8418 15.7208 17.9998 16.1022 17.9998 16.5C17.9998 16.8978 17.8418 17.2792 17.5605 17.5605C17.2792 17.8418 16.8978 17.9998 16.5 17.9998C16.1022 17.9998 15.7208 17.8418 15.4395 17.5605L12 14.121L8.5605 17.5605C8.42152 17.7003 8.25628 17.8112 8.07428 17.8869C7.89228 17.9626 7.69711 18.0016 7.5 18.0016C7.30289 18.0016 7.10772 17.9626 6.92572 17.8869C6.74372 17.8112 6.57848 17.7003 6.4395 17.5605C6.30008 17.4213 6.18948 17.256 6.11401 17.074C6.03854 16.8921 5.9997 16.697 5.9997 16.5C5.9997 16.303 6.03854 16.1079 6.11401 15.926C6.18948 15.744 6.30008 15.5787 6.4395 15.4395L9.879 12L6.4395 8.5605C6.15824 8.27924 6.00023 7.89776 6.00023 7.5C6.00023 7.10224 6.15824 6.72076 6.4395 6.4395C6.72076 6.15824 7.10224 6.00023 7.5 6.00023C7.89776 6.00023 8.27924 6.15824 8.5605 6.4395L12 9.879L15.4395 6.4395C15.7208 6.15824 16.1022 6.00023 16.5 6.00023C16.8978 6.00023 17.2792 6.15824 17.5605 6.4395C17.8418 6.72076 17.9998 7.10224 17.9998 7.5C17.9998 7.89776 17.8418 8.27924 17.5605 8.5605L14.121 12L17.5605 15.4395Z"
                                         fill="#B34454" />
                                 </svg>
                             </span></li>
                         </ul>
-                    </div> -->
-                    <!-- <li>Ajouter les étapes pour la préparation</li>
+                    </div>
+                    <li>Ajouter les étapes pour la préparation</li>
                     <div class="etapes-content">
                         <textarea 
                         name="" 
@@ -121,20 +119,13 @@
                         cols="30" 
                         rows="3" 
                         placeholder="Ex: laver les tomates et les couper en rondelle"
-                        formControlName="addStep"></textarea>
-                        <button class="form-button" id="etapes-btn">Ajouter</button>
-                    </div> -->
-                    <div id="visualisation-etapes" class="visualisation-content">
+                        #step></textarea>
+                        <button (click)="addStepToRecipe(step.value)" class="form-button" id="etapes-btn" type="button">Ajouter</button>
+                    </div>
+                    <div [ngStyle]="steps.length != 0 && haveStep && {'display': 'block'}" id="visualisation-etapes" class="visualisation-content">
                         <ol>
-                            <li>Laver la tomates, la salade, les radis roses, le poivron à l’eau claire.<span>
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M12 0C5.3715 0 0 5.373 0 12C0 18.627 5.3715 24 12 24C18.6285 24 24 18.627 24 12C24 5.373 18.6285 0 12 0ZM17.5605 15.4395C17.8418 15.7208 17.9998 16.1022 17.9998 16.5C17.9998 16.8978 17.8418 17.2792 17.5605 17.5605C17.2792 17.8418 16.8978 17.9998 16.5 17.9998C16.1022 17.9998 15.7208 17.8418 15.4395 17.5605L12 14.121L8.5605 17.5605C8.42152 17.7003 8.25628 17.8112 8.07428 17.8869C7.89228 17.9626 7.69711 18.0016 7.5 18.0016C7.30289 18.0016 7.10772 17.9626 6.92572 17.8869C6.74372 17.8112 6.57848 17.7003 6.4395 17.5605C6.30008 17.4213 6.18948 17.256 6.11401 17.074C6.03854 16.8921 5.9997 16.697 5.9997 16.5C5.9997 16.303 6.03854 16.1079 6.11401 15.926C6.18948 15.744 6.30008 15.5787 6.4395 15.4395L9.879 12L6.4395 8.5605C6.15824 8.27924 6.00023 7.89776 6.00023 7.5C6.00023 7.10224 6.15824 6.72076 6.4395 6.4395C6.72076 6.15824 7.10224 6.00023 7.5 6.00023C7.89776 6.00023 8.27924 6.15824 8.5605 6.4395L12 9.879L15.4395 6.4395C15.7208 6.15824 16.1022 6.00023 16.5 6.00023C16.8978 6.00023 17.2792 6.15824 17.5605 6.4395C17.8418 6.72076 17.9998 7.10224 17.9998 7.5C17.9998 7.89776 17.8418 8.27924 17.5605 8.5605L14.121 12L17.5605 15.4395Z"
-                                        fill="#B34454" />
-                                </svg>
-                            </span></li>
-                            <li>Faire cuire la patate douce dans une casserole d’eau bouillante pendant 15.<span>
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <li *ngFor="let step of steps, let index">{{step}}<span>
+                                <svg (click)="deleteStepFromRecipe(step)" width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M12 0C5.3715 0 0 5.373 0 12C0 18.627 5.3715 24 12 24C18.6285 24 24 18.627 24 12C24 5.373 18.6285 0 12 0ZM17.5605 15.4395C17.8418 15.7208 17.9998 16.1022 17.9998 16.5C17.9998 16.8978 17.8418 17.2792 17.5605 17.5605C17.2792 17.8418 16.8978 17.9998 16.5 17.9998C16.1022 17.9998 15.7208 17.8418 15.4395 17.5605L12 14.121L8.5605 17.5605C8.42152 17.7003 8.25628 17.8112 8.07428 17.8869C7.89228 17.9626 7.69711 18.0016 7.5 18.0016C7.30289 18.0016 7.10772 17.9626 6.92572 17.8869C6.74372 17.8112 6.57848 17.7003 6.4395 17.5605C6.30008 17.4213 6.18948 17.256 6.11401 17.074C6.03854 16.8921 5.9997 16.697 5.9997 16.5C5.9997 16.303 6.03854 16.1079 6.11401 15.926C6.18948 15.744 6.30008 15.5787 6.4395 15.4395L9.879 12L6.4395 8.5605C6.15824 8.27924 6.00023 7.89776 6.00023 7.5C6.00023 7.10224 6.15824 6.72076 6.4395 6.4395C6.72076 6.15824 7.10224 6.00023 7.5 6.00023C7.89776 6.00023 8.27924 6.15824 8.5605 6.4395L12 9.879L15.4395 6.4395C15.7208 6.15824 16.1022 6.00023 16.5 6.00023C16.8978 6.00023 17.2792 6.15824 17.5605 6.4395C17.8418 6.72076 17.9998 7.10224 17.9998 7.5C17.9998 7.89776 17.8418 8.27924 17.5605 8.5605L14.121 12L17.5605 15.4395Z"
                                         fill="#B34454" />

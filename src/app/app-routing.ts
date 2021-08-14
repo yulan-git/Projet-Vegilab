@@ -11,11 +11,10 @@ import { LayoutConnexionComponent } from "./shared/layout-connexion/layout-conne
 import { LayoutComponent } from "./shared/layout/layout.component";
 import { RecipeCardComponent } from "./recipes/recipe-card/recipe-card.component";
 import { WelcomeHomeComponent } from "./welcome-home/welcome-home.component";
-import { AuthGuard } from "./guards/auth.guard";
+import { AuthGuard } from "./auth/guards/auth.guard";
 import { RecipeDetailsComponent } from "./recipes/recipe-details/recipe-details.component";
-import { RecapitulatifComponent } from "./recipe-form/recapitulatif/recapitulatif.component";
-import { SignupComponent } from "./signup/signup.component";
-import { LoginComponent } from "./login/login.component";
+import { SignupComponent } from "./auth/signup/signup.component";
+import { LoginComponent } from "./auth/login/login.component";
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -33,7 +32,7 @@ const appRoutes: Routes = [
         { path: 'recettes-favorites', component: FavoritesRecipesComponent },
         { path: 'recettes-publiees', component: InlineRecipeComponent },
         { path: 'formulaire', component: RecipeFormComponent },
-        { path: 'recapitulatif', component: RecapitulatifComponent },
+        { path: 'formulaire/:id', component: RecipeFormComponent },
         { path: 'planning', component: PlanningComponent }]
     },
     //{ path: 'not-found', component: NotFoundComponent},

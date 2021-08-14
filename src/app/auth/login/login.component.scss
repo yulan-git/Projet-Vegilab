@@ -1,6 +1,6 @@
-@use "../../assets/scss/mixin" as m;
-@use "../../assets/scss/variables" as v;
-@import "../../assets/scss/login-signup";
+@use "../../../assets/scss/mixin" as m;
+@use "../../../assets/scss/variables" as v;
+@import "../../../assets/scss/login-signup";
 
 .login-input{
   @include m.formInput();
@@ -10,6 +10,7 @@
   position: absolute;
   margin-top: -50px;
   margin-left: 595px;
+}
 
 @media (max-width: 1200px) {
   #eye-icon{

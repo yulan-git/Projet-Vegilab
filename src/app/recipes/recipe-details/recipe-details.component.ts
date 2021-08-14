@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { Recipe } from 'src/app/models/recipe.model';
-import { User } from 'src/app/models/user.model';
+import { ActivatedRoute, Params } from '@angular/router';
 import { RecipeService } from 'src/app/services/recipe.service';
-
 
 @Component({
   selector: 'app-recipe-details',
@@ -14,7 +10,8 @@ import { RecipeService } from 'src/app/services/recipe.service';
 export class RecipeDetailsComponent implements OnInit {
   recipe: any;
   id: number;
-  private recSub: Subscription;
+  ingredientsList: [];
+  createdBy: string;
 
   constructor(
     private recipeService: RecipeService,
@@ -26,8 +23,9 @@ export class RecipeDetailsComponent implements OnInit {
         this.id = +params['id'];
         console.log(this.id);
         this.recipeService.getRecipe(this.id).subscribe(resp => {
-          console.log(resp);
           this.recipe = resp;
+          this.createdBy = String(Object.keys(this.recipe.user));
+          console.log(this.createdBy);
         })
       }
     )

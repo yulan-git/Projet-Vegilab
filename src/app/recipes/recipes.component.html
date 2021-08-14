@@ -8,15 +8,17 @@
         >Confirmer</button>
         <button >Annuler</button>
     </ng-template>
-    <div class="recipe-content">
-        <div class="cards-content">
-            <app-recipe-card 
-            *ngFor="let recipe of recipes; let i = index"
-            [recipe]="recipe"
-            (recipeEvent) = "onDeleteRecipe($event)"
-            ></app-recipe-card>
+        <div class="recipe-content">
+            <div class="cards-content">
+                <app-recipe-card 
+                [isHide]="false"
+                *ngFor="let recipe of recipes; let i = index"
+                [recipe]="recipe"
+                (deleteEvent) = "onDeleteRecipe($event)"
+                (updateEvent) = "onUpdateRecipe($event)"
+                ></app-recipe-card>
+            </div>
         </div>
-    </div>
     <h2 class="title-content">Idées Recettes Vegan</h2>
     <div class="recipe-content">
         <div class="cards-content">

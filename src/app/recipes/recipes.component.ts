@@ -33,15 +33,6 @@ constructor(private route: ActivatedRoute, private recipeService: RecipeService)
       console.log(this.recipes)
     })
   }
-  
-  onDeleteRecipe(id:number) {
-    this.recSub = this.recipeService.deleteRecipe(id).subscribe(resp => {
-      console.log('la recette  a bien été supprimée');
-    });
-    this.dataRecipes = this.recipes.filter(recipe => recipe.id !== id);
-    console.log(this.dataRecipes); 
-    this.recipes = this.dataRecipes;
-  }
 
   ngOnDestroy() {
     this.recSub.unsubscribe();
