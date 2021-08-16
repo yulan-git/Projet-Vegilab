@@ -27,21 +27,25 @@
     position: absolute;
     margin: 50px 200px;
     text-align: center;
-    font-family: v.$Caveat;
-
-    & h2{
+    font-family: v.$Patrick;
+    
+    & h1{
+        font-family: v.$Caveat;
         font-size: 4.3rem;
-        margin-bottom: 15px;
+        margin-bottom: 35px;
     }
     & .text-content{
         font-size: 1.6rem;
         margin-bottom: 5px;
+        line-height: 150%;
     }
-
+    
     & .text-more{
-        font-size: 1.4rem;
+        font-size: 2rem;
         color: v.$green;
         cursor: pointer;
+        font-family: v.$Caveat;
+
     }
 
 }
@@ -117,7 +121,7 @@
 @media (max-width: 1540px) {
     .text-container{
 
-    & h2{
+    & h1{
         font-size: 3.5rem;
     }
     & .text-content{
@@ -145,7 +149,7 @@
     }
 
     .text-container{
-        & h2{
+        & h1{
             font-size: 3.3rem;
         }
         & .text-content{
@@ -179,7 +183,7 @@
 
     .text-container{
 
-    & h2{
+    & h1{
         font-size: 2.8rem;
     }
     }
@@ -264,7 +268,7 @@
 
     .text-container{
 
-    & h2{
+    & h1{
         font-size: 1.7rem;
     }
 

@@ -55,10 +55,10 @@
     width: 100%;
     margin: 10px 0;
     border: none;
-    border-radius: 5px;
     padding: 10px;
     font-family: v.$Patrick;
     font-size: 1.2rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 2px 1px -1px rgb(0 0 0 / 12%) ;
 }
 
 .form-button{
@@ -66,14 +66,35 @@
 
 }
 
+#choose-button{
+    font-family: v.$Patrick;
+    color: v.$green;
+    font-size: 1.1rem;
+}
+
+#upload-img, #update-img{
+    margin-top: 20px;
+}
+
+.progress-bar{
+    font-family: v.$Patrick;
+    color: v.$green;
+    font-size: 1.1rem;
+}
+
+#imagePath{
+    display: none;
+}
+
 #description{
     width: 100%;
     margin: 10px 0;
     border: none;
-    border-radius: 5px;
     padding: 10px;
     font-family: v.$Patrick;
     font-size: 1.2rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 2px 1px -1px rgb(0 0 0 / 12%) ;
+
 }
 .input-group{
     display: flex;
@@ -81,12 +102,12 @@
     flex-wrap: wrap;
     width: 100%;
     margin-bottom: 20px;
+
 }
 
 .select-elements{
     display: flex;
-    height: 35px;
-    border-radius: 5px;
+    height: 40px;
     border: none;
     width: 180px;
     padding: 0 7px;
@@ -97,6 +118,8 @@
     font-size: 1.1rem;
     opacity: 0.7;
     padding-left: 10px;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 2px 1px -1px rgb(0 0 0 / 12%) ;
+
 }
 
 #select-categories{
@@ -112,15 +135,21 @@
 
     & input{
         border: none;
-        height: 30px;
-        border-radius: 5px;
+        height: 40px;
         width: 180px;
         margin: 0 8px;
         color: #000;
         font-family: v.$Patrick;
         font-size: 1.1rem;
         padding-left: 7px;
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 2px 1px -1px rgb(0 0 0 / 12%) ;
+
     }
+}
+
+.ng-autocomplete{
+    margin-top: 10px;
+    width: 250px;
 }
 
 #dropdown-qte{
@@ -134,10 +163,11 @@
 #etapes{
     width: 70%;
     border: none;
-    border-radius: 5px;
     padding: 10px;
     font-family: v.$Patrick;
     font-size: 1.2rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 2px 1px -1px rgb(0 0 0 / 12%) ;
+
 
     &::placeholder{
         font-size: 0.9rem;
@@ -165,6 +195,8 @@
     background-color: white;
     border-radius: 10px;
     padding: 20px;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 2px 1px -1px rgb(0 0 0 / 12%) ;
+
     & h5{
         font-family: v.$Indie;
     }

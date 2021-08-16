@@ -23,7 +23,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { WelcomeHomeComponent } from './welcome-home/welcome-home.component';
 import { RecipeDetailsComponent } from './recipes/recipe-details/recipe-details.component';
 import { RecipeService } from './services/recipe.service';
-import { StorageComponent } from './storage/storage.component';
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
@@ -32,15 +31,14 @@ import { SearchRecipeComponent } from './search-recipe/search-recipe.component';
 import { AuthInterceptor } from './auth/interceptor/auth.interceptor';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
-//import { DelelePopupComponent } from './recipes/delele-popup/delele-popup.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environmentFirebase } from 'src/environments/environnement-firebase';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 registerLocaleData(localeFr, 'fr');
-//import { AngularFireModule } from "@angular/fire";
-// import { environment } from "../environments/environment";
-// import {
-//   AngularFireStorageModule,
-//   AngularFireStorageReference,
-//   AngularFireUploadTask,
-// } from "@angular/fire/storage";
+
 
 @NgModule({
   declarations: [
@@ -63,7 +61,6 @@ registerLocaleData(localeFr, 'fr');
     NotFoundComponent,
     WelcomeHomeComponent,
     RecipeDetailsComponent,
-    StorageComponent,
     AddToPlanningFormComponent,
     SearchRecipeComponent,
     //DelelePopupComponent,
@@ -75,8 +72,12 @@ registerLocaleData(localeFr, 'fr');
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
-    //AngularFireStorageModule,
-    //AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
+    AngularFireModule.initializeApp(environmentFirebase.firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
+    BrowserAnimationsModule,
+    AutocompleteLibModule
+
   ],
   providers: [
     RecipeService,

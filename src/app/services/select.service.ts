@@ -6,7 +6,6 @@ import { Category } from '../models/category.model';
 import { Cost } from '../models/cost.model';
 import { Difficulty } from '../models/difficulty.model';
 import { Ingredient } from '../models/ingredient.model';
-import { Unity } from '../models/unity.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,12 +30,6 @@ export class SelectService {
 
   getAllCategories() {
     return this.http.get<Category[]>(`${this.API_URL}/select/categories`).pipe(
-      catchError(error=>of([]))
-    )
-  }
-
-  getAllUnities() {
-    return this.http.get<Unity[]>(`${this.API_URL}/select/unities`).pipe(
       catchError(error=>of([]))
     )
   }

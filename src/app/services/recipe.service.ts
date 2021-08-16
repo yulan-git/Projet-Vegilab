@@ -30,7 +30,7 @@ export class RecipeService {
   }
   
   getRecipesByUserId(userId: number) {
-    return this.http.get<Recipe[]>(`${this.API_URL}/recipes/${userId}/user`).subscribe(resp => {
+    return this.http.get<Recipe[]>(`${this.API_URL}/recipes/user/${userId}`).subscribe(resp => {
       this.recipeSubject.next(resp)
     })
   }

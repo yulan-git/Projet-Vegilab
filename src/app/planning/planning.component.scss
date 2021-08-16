@@ -1,0 +1,7 @@
+@use "../../assets/scss/variables" as v;
+@use "../../assets/scss/mixin" as m;
+
+p{
+    @include m.contentTitle(v.$darkPink);
+    margin-bottom: 50px;
+}

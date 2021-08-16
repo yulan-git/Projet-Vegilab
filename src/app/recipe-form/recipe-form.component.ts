@@ -1,18 +1,19 @@
 import { formatDate } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { EventEmitter } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { first } from 'rxjs/operators';
 import { Category } from '../models/category.model';
 import { Cost } from '../models/cost.model';
 import { Difficulty } from '../models/difficulty.model';
 import { Ingredient } from '../models/ingredient.model';
 import { Recipe } from '../models/recipe.model';
+import { Upload } from '../models/upload.model';
 import { AuthService } from '../services/auth.service';
 import { RecipeService } from '../services/recipe.service';
 import { SelectService } from '../services/select.service';
-import { UserService } from '../services/user.service';
+import { UploadService } from '../services/upload.service';
 
 @Component({
   selector: 'app-recipe-form',
@@ -20,6 +21,12 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./recipe-form.component.scss']
 })
 export class RecipeFormComponent implements OnInit {
+  @Output() eventRecupTexteInput = new EventEmitter<string>();
+
+  selectedFiles?: FileList;
+  currentFileUpload?: Upload;
+  currentUploadUrl?: string;
+  percentage = 0;
 
   categories: Category[];
   costs: Cost[];
@@ -34,16 +41,18 @@ export class RecipeFormComponent implements OnInit {
   id: number;
   isCreateMode: boolean;
   isAdded: boolean = false;
+  ingrData: Ingredient[];
   ingredients: Ingredient[];
   ingredientList: {};
   ingrMap: Map<string, number>;
+  imagePath: any;
 
   newRecipe: any;
   nbPerson: number;
 
   recipeForm: FormGroup;
   recipeList: Recipe[];
-  recipeToModify: any;
+  recipeToModify: Recipe;
   recSub: Subscription;
 
   steps: string[];
@@ -56,13 +65,17 @@ export class RecipeFormComponent implements OnInit {
     '- de 20min', 'entre 20-40min', 'entre 40-60min', '+ de 60min'
   ]
 
+  placeholder: string = 'Sélectionnez votre indrédient';
+  keyword = 'name';
+  historyHeading: string = 'Récemment sélectionné';
+
   constructor(
     private selectService: SelectService,
     private recipeService: RecipeService,
     private router: Router,
     private authService: AuthService,
     private route: ActivatedRoute,
-    private userService: UserService
+    private uploadService: UploadService
   ) {
     this.recipeForm = new FormGroup({});
   }
@@ -94,21 +107,42 @@ export class RecipeFormComponent implements OnInit {
       description: new FormControl(''),
       preparationTime: new FormControl(null),
       cookingTime: new FormControl(null),
-      difficulties: new FormControl(null),
+      difficulties: new FormControl(1),
       ingredientsList: new FormControl({}),
       categories: new FormControl([]),
-      costs: new FormControl(null),
+      costs: new FormControl(1),
       nbPerson: new FormControl(null),
-      steps: new FormControl([])
+      steps: new FormControl([]),
+      image: new FormControl(null)
     });
 
     if (!this.isCreateMode) {
-      this.recipeService.getRecipe(this.id).subscribe(recipe => this.recipeForm.patchValue(recipe)
-      );
       
+      this.recipeService.getRecipe(this.id).subscribe(recipe => {
+        this.recipeToModify = recipe as Recipe;
+
+        this.ingrMap = this.ObjectToMap(this.recipeToModify.ingredientsList);
+        this.steps = this.recipeToModify.steps;
+        this.imagePath = this.recipeToModify.image;
+        console.log(this.imagePath);
+        
+
+        this.recipeForm.setValue({
+          name: this.recipeToModify.name,
+          description: this.recipeToModify.description,
+          preparationTime: this.recipeToModify.preparationTime,
+          cookingTime: this.recipeToModify.cookingTime,
+          difficulties: this.recipeToModify.difficulty.id,
+          ingredientsList: this.ingredientList,
+          costs: this.recipeToModify.cost.id,
+          categories: this.recipeToModify.categories,
+          nbPerson: this.recipeToModify.nbPerson,
+          steps: this.steps,
+          image: this.imagePath
+        })
+      });
     }
   }
-
   getUser() {
     this.currentUserId = this.authService.getUserId();
     this.currentUsername = this.authService.getUserUsername();
@@ -116,6 +150,8 @@ export class RecipeFormComponent implements OnInit {
   }
 
   addIngredientToList(ingredient: string, amount: number, nbPerson: number) {
+    console.log(ingredient);
+    
     this.isAdded = true;
     this.nbPerson = nbPerson;
     this.ingrMap.set(ingredient, amount);
@@ -130,6 +166,10 @@ export class RecipeFormComponent implements OnInit {
     this.steps.push(step);
   }
 
+  exportImageUrl(url: string) {
+    this.imagePath = url;
+  }
+
   deleteStepFromRecipe(stepIndex: string) {
     for (let i = 0; i < this.steps.length; i++) {
       if (this.steps[i] === stepIndex) {
@@ -139,15 +179,60 @@ export class RecipeFormComponent implements OnInit {
     }
   }
 
+  afficherTexteInputRecu(content: string) {
+    console.log("contenu input : " + content)
+    console.log(this.ingredients);
+    this.ingredients = this.ingrData.filter(x => x.name.toLowerCase().includes(content.toLocaleLowerCase()));
+    console.log(this.ingredients);
+  }
+
+
   mapToObject(map: Map<string, number>, list: {}) {
     map.forEach((val, key) => {
       list[key] = val;
     })
   }
 
+  ObjectToMap(obj) {
+      const keys = Object.keys(obj);
+      const map = new Map();
+      for (let i = 0; i < keys.length; i++) {
+        map.set(keys[i], obj[keys[i]]);
+      };
+      return map;
+    
+  }
+
+
+  selectFile(event: any): void {
+    this.selectedFiles = event.target.files;
+  }
+
+  upload(): void {
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+      this.selectedFiles = undefined;
+
+      if (file) {
+        this.currentFileUpload = new Upload(file);
+        this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
+          percentage => {
+            this.percentage = Math.round(percentage ? percentage : 0);
+            this.imagePath = this.currentFileUpload.url;
+          },
+          error => {
+            console.log(error);
+          }
+          );
+        }
+    }
+  }
+
   onSubmit() {
     this.mapToObject(this.ingrMap, this.ingredientList);
     this.mapToObject(this.userMap, this.user);
+    this.imagePath = document.querySelector('#imagePath').textContent;
+
 
     this.newRecipe = {
       name: this.recipeForm.value.name,
@@ -161,8 +246,10 @@ export class RecipeFormComponent implements OnInit {
       ingredientsList: this.ingredientList,
       datePublication: this.currentDate,
       steps: this.steps,
-      user: this.user
+      user: this.user,
+      image: this.imagePath
     }
+
     this.recipeToModify = {
       id: this.id,
       name: this.recipeForm.value.name,
@@ -176,16 +263,19 @@ export class RecipeFormComponent implements OnInit {
       ingredientsList: this.ingredientList,
       datePublication: this.currentDate,
       steps: this.steps,
-      user: this.user
+      user: this.user,
+      image: this.imagePath
     }
+
+    console.log(this.newRecipe);
+    console.log(this.recipeToModify);
+    
 
     if (this.isCreateMode) {
       this.createRecipe();
     } else {
       this.updateRecipe();
     }
-
-
   }
   
   private createRecipe() {
@@ -196,36 +286,35 @@ export class RecipeFormComponent implements OnInit {
   }
 
   private updateRecipe() {
+
     this.recipeService.updateRecipe(this.recipeToModify).subscribe((resp: any) => {
       console.log('Recette modifiée');
     })
     this.router.navigate(['welcome-home']);
   }
+
   
   getDifficultiesList() {
     this.selectService.getAllDifficulties().subscribe(resp => {
-      console.log(resp);
       this.difficulties = resp;
     })
   }
 
   getCostsList() {
     this.selectService.getAllCosts().subscribe(resp => {
-      console.log(resp);
       this.costs = resp;
     })
   }
   getCategoriesList() {
     this.selectService.getAllCategories().subscribe(resp => {
-      console.log(resp);
       this.categories = resp;
     })
   }
 
   getIngredientsList() {
     this.selectService.getAllIngredients().subscribe(resp => {
-      console.log(resp);
       this.ingredients = resp;
+      this.ingrData = this.ingredients;
     })
   }
 }

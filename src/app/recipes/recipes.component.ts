@@ -21,7 +21,7 @@ export class RecipesComponent implements OnInit {
   private recSub: Subscription;
   seePopup: boolean = false;
 
-constructor(private route: ActivatedRoute, private recipeService: RecipeService) { }
+constructor(private recipeService: RecipeService) { }
 
   ngOnInit(): void {
     this.onGetRecipes();

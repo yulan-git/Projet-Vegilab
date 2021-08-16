@@ -50,19 +50,16 @@ export class SearchRecipeComponent implements OnInit, OnDestroy {
 
   getDifficultiesList() {
     this.recSub = this.selectService.getAllDifficulties().subscribe(resp => {
-      console.log(resp);
       this.difficulties = resp;
     })
   }
   getCostsList() {
     this.recSub = this.selectService.getAllCosts().subscribe(resp => {
-      console.log(resp);
       this.costs = resp;
     })
   }
   getCategoriesList() {
     this.recSub = this.selectService.getAllCategories().subscribe(resp => {
-      console.log(resp);
       this.categories = resp;
     })
   }

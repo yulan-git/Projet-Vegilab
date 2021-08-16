@@ -20,8 +20,7 @@ export class RecipeCardComponent implements OnInit, OnDestroy {
   id: number;
   private recSub: Subscription;
   
-  constructor(private recipeService: RecipeService,
-    private router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -33,7 +32,7 @@ export class RecipeCardComponent implements OnInit, OnDestroy {
   }
   recipeIdToUpdate(recipeId:number) {
     this.updateEvent.emit(recipeId);
-    this.router.navigate(['/formulaire/', { id: recipeId }]);
+    this.router.navigate(['/formulaire/', recipeId ]);
   }
 
   ngOnDestroy() {
