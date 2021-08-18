@@ -9,7 +9,7 @@ import { RecipeService } from '../services/recipe.service';
   styleUrls: ['./favorites-recipes.component.scss']
 })
 export class FavoritesRecipesComponent implements OnInit {
-  
+  favoritesList: Recipe[] = [];
   constructor() { }
 
   ngOnInit(): void {

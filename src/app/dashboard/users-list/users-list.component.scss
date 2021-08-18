@@ -1,0 +1,24 @@
+@use "../../../assets/scss/mixin" as m;
+@use "../../../assets/scss/variables" as v;
+
+
+.content-title{
+    @include m.contentTitle(v.$darkPink);
+}
+
+table{
+    @include m.relativeCenter();
+    margin-top: 10%;
+    border: solid 1px v.$darkPink;
+    border-radius: 5px;
+}
+
+td{
+    background-color: v.$lightRose;
+    border: solid 1px v.$darkPink;
+    margin: 0 20px;
+    padding: 10px 50px;
+    font-family: v.$Patrick;
+    font-size: 1.5rem;
+    
+}

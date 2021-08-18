@@ -239,3 +239,15 @@
         margin-bottom: 35px;
     }
 }
+@media (max-width: 300px) {
+    .logo{
+        width: 170px;
+        height: auto;
+        margin-left: 5px;
+    }
+    #nav-icon{
+        width: 45px;
+        height: 30px;
+        margin-bottom: 35px;
+    }
+}

@@ -1,0 +1,39 @@
+@use "../../assets/scss/variables" as v;
+@use "../../assets/scss/mixin" as m;
+
+.content-title{
+    @include m.contentTitle(v.$darkPink);
+    margin-bottom: 50px;
+}
+
+.choice-content{
+    display: flex;
+    justify-content: space-around;
+    margin: 50px;
+
+    & p{
+        cursor: pointer;
+    }
+}
+
+.choice-title{
+    font-family: v.$Indie;
+    color: v.$green;
+    font-size: 1.8rem;
+}
+
+
+@media (max-width: 991px) {
+    .choice-content{
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+
+        & p {
+            padding-bottom: 45px;
+        }
+    }
+    .content-title{
+        font-family: 1.2rem;
+    }
+}

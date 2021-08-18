@@ -10,7 +10,7 @@ import { RecipeService } from '../services/recipe.service';
   styleUrls: ['./inline-recipe.component.scss']
 })
 export class InlineRecipeComponent implements OnInit {
-  recipesList: Recipe[];
+  recipesList: Recipe[] = [];
   currentUserId: number;
   recipes: Recipe[];
   data: Recipe[];

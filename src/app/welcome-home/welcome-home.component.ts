@@ -18,9 +18,9 @@ export class WelcomeHomeComponent implements OnInit {
   ngOnInit(): void {
     this.currentUsername = this.authService.getUserUsername();
     this.user = this.currentUsername
-    // this.userService.getUserById(this.currentUserId).subscribe(resp => {
-    //   console.log(resp);
-    //   this.user = resp;
-    // })
+  }
+
+  isAuthenticatedAsAdmin() {
+    return this.authService.isAuthenticatedAsAdmin();
   }
 }

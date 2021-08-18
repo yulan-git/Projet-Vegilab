@@ -37,6 +37,9 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environmentFirebase } from 'src/environments/environnement-firebase';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UsersListComponent } from './dashboard/users-list/users-list.component';
+import { UsersRecipesListComponent } from './dashboard/users-recipes-list/users-recipes-list.component';
 registerLocaleData(localeFr, 'fr');
 
 
@@ -63,6 +66,9 @@ registerLocaleData(localeFr, 'fr');
     RecipeDetailsComponent,
     AddToPlanningFormComponent,
     SearchRecipeComponent,
+    DashboardComponent,
+    UsersListComponent,
+    UsersRecipesListComponent,
     //DelelePopupComponent,
   ],
   imports: [

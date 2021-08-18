@@ -37,6 +37,11 @@
 
     .form-content{
         max-width: 450px;
+        & h4{
+            font-family: v.$Caveat;
+            color: v.$lightRose;
+            font-size: 1.8rem;
+        }
     }
     
     .form-group{
@@ -191,6 +196,10 @@
         border-radius: 5px;
         margin: 10px 10px;
     }
+
+        .menu-content{
+        margin-left: 0;
+    }
     
     #separator{
         @include m.separator(260px);
@@ -241,5 +250,18 @@
 @media (min-width: 576px) {
     .form-group{
         max-width: 400px;
+    }
+}
+
+@media (max-width: 300px) {
+    .form-group{
+        max-width: 280;
+    }
+   
+    .form-input{
+        width: 250px;
+    }
+    .form-message{
+        width: 250px;
     }
 }

@@ -1,5 +1,6 @@
 <div class="welcome-container">
-    <h2 class="welcome-title">Bienvenue {{user | titlecase}}</h2>
+    <h2 class="welcome-title" *ngIf="!isAuthenticatedAsAdmin()">Bienvenue {{user | titlecase}}</h2>
+    <h2 class="welcome-title" *ngIf="isAuthenticatedAsAdmin()">Bienvenue Administrateur</h2>
     <div class="welcome-content">
         <div class="welcome-link">
             <a [routerLink]="['/recettes-favorites']">

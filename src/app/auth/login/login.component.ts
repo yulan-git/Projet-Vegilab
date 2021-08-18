@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -10,7 +10,8 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
   showPwd: boolean = false;
-  eyeIcon: boolean = true;
+  eyeIcon: boolean = true; $
+  @Input() adminRole: any = false;
 
   constructor(private router: Router,
   private authService: AuthService) { }
@@ -24,7 +25,14 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (resp: any) => {
           console.log("connection succeed", resp);
-          this.router.navigate(['/welcome-home']);
+          for (let i = 0; i < resp.roles.length; i++) {
+            if (resp.roles[i] == "USER" && resp.roles.length == 1)  {
+              this.router.navigate(['/welcome-home/']);
+            } else if (resp.roles.length > 1 ) {
+              this.router.navigate(['/dashboard/']);
+              this.adminRole = true;
+            }
+          }
         },
         error => {
           console.log('error while');

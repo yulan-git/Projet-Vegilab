@@ -1,6 +1,6 @@
-<div class="recipe-container">
+<section class="recipe-container">
     <app-search-recipe [RecipePage]="titleSearchContent"></app-search-recipe>
-    <h2 class="title-content">Nouveautés</h2>
+    <h1 class="title-content">Catalogue de recettes</h1>
     <ng-template [ngIf]="seePopup" class="delete-popup">
         <p>Êtes-vous sur de vouloir supprimer cette recette?</p>
         <button 
@@ -19,17 +19,4 @@
                 ></app-recipe-card>
             </div>
         </div>
-    <h2 class="title-content">Idées Recettes Vegan</h2>
-    <div class="recipe-content">
-        <div class="cards-content">
-            <app-recipe-card></app-recipe-card>
-        </div>
-    </div>
-    <h2 class="title-content">Idées Desserts</h2>
-    <div class="recipe-content">
-        <div class="cards-content">
-            <app-recipe-card
-            ></app-recipe-card>
-        </div>
-    </div>
-</div>
+</section>

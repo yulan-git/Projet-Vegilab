@@ -15,13 +15,15 @@ export class RecipeService {
   API_URL = `${environment.baseUrl}`;
 
   recipeSubject = new Subject<Recipe[]>();
+  recipesSubject = new Subject<Recipe[]>();
   constructor(private http: HttpClient) {
 
   }
 
   getAllRecipes() {
-    return this.http.get<Recipe[]>(`${this.API_URL}/recipes`).pipe(
-      catchError(error => of([])))
+    this.http.get<Recipe[]>(`${this.API_URL}/recipes`).subscribe(resp => {
+      this.recipesSubject.next(resp)
+    })
   }
 
   getRecipe(recipeId: number) {

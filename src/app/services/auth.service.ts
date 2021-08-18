@@ -32,7 +32,9 @@ export class AuthService {
       .pipe(
         map(
           (resp: any) => {
+            console.log(resp);
             localStorage.setItem('TOKEN_APPLI', resp.accessToken);
+            localStorage.setItem('ROLE', resp.roles)
             console.log('Token Save', resp.accessToken);
             return resp;
           }
@@ -56,7 +58,7 @@ export class AuthService {
     return localStorage.getItem('TOKEN_APPLI');
   }
 
-    getJwtToken() {
+  getJwtToken() {
     const token: any = this.getToken();
     const decode = this.jwtHelper.decodeToken(token);
     if (decode != null && decode.id != null && decode.sub != null) {
@@ -67,6 +69,14 @@ export class AuthService {
       }
     }
   }
+
+  getTokenRoles(){
+    const token: any = this.getToken();
+    const decode = this.jwtHelper.decodeToken(token);
+    const tokenRoles = decode.rol;
+    return tokenRoles;
+  }
+
 
   logout() {
     localStorage.removeItem('TOKEN_APPLI');
@@ -79,5 +89,13 @@ export class AuthService {
     const decode = this.jwtHelper.decodeToken(token);
     return decode != null;
   }
+
+  isAuthenticatedAsAdmin() {
+      const roles = localStorage.getItem('ROLE');
+    if (roles !=null && roles.includes("ADMIN")) {
+        return true;
+      } 
+  }
+
 
 }

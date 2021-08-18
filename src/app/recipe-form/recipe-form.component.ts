@@ -105,15 +105,15 @@ export class RecipeFormComponent implements OnInit {
     this.recipeForm = new FormGroup({
       name: new FormControl(''),
       description: new FormControl(''),
-      preparationTime: new FormControl(null),
-      cookingTime: new FormControl(null),
-      difficulties: new FormControl(1),
+      preparationTime: new FormControl(),
+      cookingTime: new FormControl(),
+      difficulties: new FormControl(''),
       ingredientsList: new FormControl({}),
       categories: new FormControl([]),
-      costs: new FormControl(1),
-      nbPerson: new FormControl(null),
+      costs: new FormControl(''),
+      nbPerson: new FormControl(),
       steps: new FormControl([]),
-      image: new FormControl(null)
+      image: new FormControl('')
     });
 
     if (!this.isCreateMode) {

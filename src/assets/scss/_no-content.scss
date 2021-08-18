@@ -1,0 +1,15 @@
+@use "./mixin" as m;
+@use "./variables" as v;
+
+.content-info{
+    background-color: v.$lightRose;
+    color: v.$darkPink;
+    font-family: v.$Indie;
+    font-size: 2rem;
+    padding: 50px;
+    margin: 25px 70px;
+    border: solid 1px v.$darkPink;
+    text-align: center;
+    border-radius: 30px;
+    @include m.flexCenter();
+}

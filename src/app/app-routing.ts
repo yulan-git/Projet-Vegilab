@@ -15,32 +15,40 @@ import { AuthGuard } from "./auth/guards/auth.guard";
 import { RecipeDetailsComponent } from "./recipes/recipe-details/recipe-details.component";
 import { SignupComponent } from "./auth/signup/signup.component";
 import { LoginComponent } from "./auth/login/login.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { AdminGuardGuard } from "./auth/guards/admin-guard.guard";
+import { UsersListComponent } from "./dashboard/users-list/users-list.component";
+import { UsersRecipesListComponent } from "./dashboard/users-recipes-list/users-recipes-list.component";
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
-    { path: '', component: LayoutComponent, children: [
-        { path: '', redirectTo: '/home', pathMatch: 'full' },
-        { path: 'home', component: HomeComponent },
-        { path: 'recettes', component: RecipesComponent },
-        { path: 'recettes/:id', component: RecipeDetailsComponent }
-    ]
+    {
+        path: '', component: LayoutComponent, children: [
+            { path: '', redirectTo: '/home', pathMatch: 'full' },
+            { path: 'home', component: HomeComponent },
+            { path: 'recettes', component: RecipesComponent },
+            { path: 'recettes/:id', component: RecipeDetailsComponent }
+        ]
     },
     {
-        path: '', canActivate: [AuthGuard],component: LayoutConnexionComponent, children: [
-        { path: 'welcome-home', component: WelcomeHomeComponent },
-        { path: 'recettes-favorites', component: FavoritesRecipesComponent },
-        { path: 'recettes-publiees', component: InlineRecipeComponent },
-        { path: 'formulaire', component: RecipeFormComponent },
-        { path: 'formulaire/:id', component: RecipeFormComponent },
-        { path: 'planning', component: PlanningComponent }]
+        path: '', canActivate: [AuthGuard], component: LayoutConnexionComponent, children: [
+            { path: 'dashboard', component: DashboardComponent },
+            { path: 'users-list', component: UsersListComponent },
+            { path: 'users-recipes-list', component: UsersRecipesListComponent },
+            { path: 'welcome-home', component: WelcomeHomeComponent },
+            { path: 'recettes-favorites', component: FavoritesRecipesComponent },
+            { path: 'recettes-publiees', component: InlineRecipeComponent },
+            { path: 'formulaire', component: RecipeFormComponent },
+            { path: 'formulaire/:id', component: RecipeFormComponent },
+            { path: 'planning', component: PlanningComponent }]
     },
     //{ path: 'not-found', component: NotFoundComponent},
     //{ path: '**', redirectTo: '/not-found' }
 ]
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
+    imports: [RouterModule.forRoot(appRoutes, { scrollPositionRestoration: 'enabled' })],
     exports: [RouterModule]
 })
 

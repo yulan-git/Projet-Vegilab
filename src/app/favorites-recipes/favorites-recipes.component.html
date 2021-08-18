@@ -10,10 +10,13 @@
             </svg>
         </span>
     </div>
+    <span *ngIf="favoritesList.length == 0" class="content-info">
+        Votre liste de recettes favorites est vide !
+    </span>
     <div class="favories-content">
         <div class="cards-content">
             <app-recipe-card
-            *ngFor="let recipeItem of ['','']"></app-recipe-card>
+            *ngFor="let recipeItem of favoritesList"></app-recipe-card>
         </div>
     </div>
     <app-search-recipe></app-search-recipe>

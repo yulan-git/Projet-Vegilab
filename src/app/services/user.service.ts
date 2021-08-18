@@ -13,15 +13,17 @@ import { AuthService } from './auth.service';
 export class UserService {
 
   userSubject = new Subject<User>();
+  usersSubject = new Subject<User[]>();
   API_URL = `${environment.baseUrl}`;
 
   constructor(private http: HttpClient, private authService: AuthService) { }
   
   getAllUsers() {
-    return this.http.get<User[]>(`${this.API_URL}/users`).pipe(
-      catchError(error => of([]))
-    )
+    return this.http.get<User[]>(`${this.API_URL}/users`).subscribe(resp=>{
+      this.usersSubject.next(resp);
+    })
   }
+
 
   getUser(id: number) {
     this.http.get<User>(`${this.API_URL}/users/${id}`).subscribe(resp => {
@@ -36,9 +38,10 @@ export class UserService {
     )
   }
 
-  addUserInRecipe(id: number, recipe: Recipe) {
-    return this.http.post<User>(`${this.API_URL}/users/${id}/recipe`, recipe);
+  deleteUserById(id: number){
+    return this.http.delete<User>(`${this.API_URL}/users/${id}`).pipe(
+      catchError(error => of([]))
+    )
   }
-
   
 }

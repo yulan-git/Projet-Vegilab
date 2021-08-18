@@ -30,6 +30,13 @@
     transform: translate(-50%, -50%)
 }
 
+@mixin relativeCenter() {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
+}
+
 @mixin gradient($listColor) {   
     background: -webkit-linear-gradient($listColor);
     background: -moz-linear-gradient($listColor);

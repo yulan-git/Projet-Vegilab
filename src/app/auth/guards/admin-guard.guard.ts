@@ -6,21 +6,20 @@ import { AuthService } from 'src/app/services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AdminGuardGuard implements CanActivate {
 
-constructor(private router: Router, private authService: AuthService){}
-
+  constructor(private router: Router, private authService: AuthService) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const token = localStorage.getItem('TOKEN_APPLI');
-    if (token) {
-      console.log("token trouvé, ok guard !");
-      return true;
-    } else {
-      console.log('Pas de token, no guard');
-      this.router.navigate(['/login']);
-      return false;
-    }
-  }
+    const tokenRole = this.authService.getTokenRoles();
+    for (let i = 0; i < tokenRole.length; i++) {
+      if (tokenRole[i].authority == "ADMIN") {
+        this.router.navigate(['/dashboard']);
+        return true;
+      } else {
+        return false
+      }
+    }  }
+  
 }
