@@ -1,5 +1,6 @@
 import { formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Recipe } from 'src/app/models/recipe.model';
 import { User } from 'src/app/models/user.model';
@@ -12,16 +13,17 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./users-recipes-list.component.scss']
 })
 export class UsersRecipesListComponent implements OnInit {
-  recipesList: Recipe[] = [];
+  recipesList: Recipe[];
   recipeSub: Subscription;
   datePublication: any;
+  @Output() updateEvent = new EventEmitter<any>();
 
-  constructor(private userService: UserService, private recipeService: RecipeService) { }
+  constructor(private userService: UserService, private recipeService: RecipeService, private router: Router) { }
 
   ngOnInit(): void {
-    this.recipesList = [];
     this.recipeSub = this.recipeService.recipesSubject.subscribe(resp => {
       this.recipesList = resp as Recipe[];
+      
     });
     this.recipeService.getAllRecipes();
   }
@@ -32,7 +34,9 @@ export class UsersRecipesListComponent implements OnInit {
       this.recipeService.getAllRecipes();
     });
   }
-
-
+  recipeToUpdate(id: number) {
+    this.updateEvent.emit(id);
+    this.router.navigate(['/formulaire/', id]);
+  }
 
 }

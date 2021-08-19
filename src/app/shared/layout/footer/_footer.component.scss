@@ -88,6 +88,10 @@
             color: v.$lightRose;
             
         }
+
+        & a:hover{
+            color: v.$green;
+        }
     }
     .menu-content{
         margin-left: 10%;

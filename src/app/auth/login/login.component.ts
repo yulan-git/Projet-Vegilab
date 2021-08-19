@@ -25,14 +25,14 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (resp: any) => {
           console.log("connection succeed", resp);
-          for (let i = 0; i < resp.roles.length; i++) {
-            if (resp.roles[i] == "USER" && resp.roles.length == 1)  {
-              this.router.navigate(['/welcome-home/']);
-            } else if (resp.roles.length > 1 ) {
+          console.log(resp.roles)
+          const admin = resp.roles.find(role => role == "ADMIN");
+            if (admin) {
               this.router.navigate(['/dashboard/']);
               this.adminRole = true;
+            } else {
+              this.router.navigate(['/welcome-home/']);
             }
-          }
         },
         error => {
           console.log('error while');

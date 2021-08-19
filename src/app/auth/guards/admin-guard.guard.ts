@@ -13,13 +13,16 @@ export class AdminGuardGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const tokenRole = this.authService.getTokenRoles();
-    for (let i = 0; i < tokenRole.length; i++) {
-      if (tokenRole[i].authority == "ADMIN") {
-        this.router.navigate(['/dashboard']);
-        return true;
-      } else {
-        return false
-      }
-    }  }
-  
+    console.log(tokenRole);
+    let authorization: boolean;
+    const admin = tokenRole.find(role => role.authority == "ADMIN");
+    if (admin) {
+      authorization = true;
+    } else {
+      authorization = false;
+
+      this.router.navigate(['/welcome-home/']);
+    }
+    return authorization;
+  }
 }

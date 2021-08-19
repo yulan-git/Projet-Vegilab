@@ -14,6 +14,7 @@ constructor(private router: Router, private authService: AuthService){}
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const token = localStorage.getItem('TOKEN_APPLI');
+
     if (token) {
       console.log("token trouvé, ok guard !");
       return true;

@@ -21,7 +21,7 @@ export class RecipeService {
   }
 
   getAllRecipes() {
-    this.http.get<Recipe[]>(`${this.API_URL}/recipes`).subscribe(resp => {
+    this.http.get<Recipe[]>(`${this.API_URL}/recipes?limit=5`).subscribe(resp => {
       this.recipesSubject.next(resp)
     })
   }

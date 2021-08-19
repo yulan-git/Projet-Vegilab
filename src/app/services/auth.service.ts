@@ -75,6 +75,10 @@ export class AuthService {
     const decode = this.jwtHelper.decodeToken(token);
     const tokenRoles = decode.rol;
     return tokenRoles;
+    // tokenRoles.forEach( role => {
+    //   console.log(role.authority);
+    //   return role.authority;
+    // });
   }
 
 

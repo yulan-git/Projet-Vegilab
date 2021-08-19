@@ -19,10 +19,14 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { AdminGuardGuard } from "./auth/guards/admin-guard.guard";
 import { UsersListComponent } from "./dashboard/users-list/users-list.component";
 import { UsersRecipesListComponent } from "./dashboard/users-recipes-list/users-recipes-list.component";
+import { MentionsLegalesComponent } from "./shared/mentions-legales/mentions-legales.component";
+import { CgvComponent } from "./shared/cgv/cgv.component";
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
+    { path: 'mentions-legales', component: MentionsLegalesComponent },
+    { path: 'cgv', component: CgvComponent },
     {
         path: '', component: LayoutComponent, children: [
             { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -33,7 +37,7 @@ const appRoutes: Routes = [
     },
     {
         path: '', canActivate: [AuthGuard], component: LayoutConnexionComponent, children: [
-            { path: 'dashboard', component: DashboardComponent },
+            { path: 'dashboard', canActivate: [AdminGuardGuard], component: DashboardComponent },
             { path: 'users-list', component: UsersListComponent },
             { path: 'users-recipes-list', component: UsersRecipesListComponent },
             { path: 'welcome-home', component: WelcomeHomeComponent },

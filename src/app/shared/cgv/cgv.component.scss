@@ -1,0 +1,24 @@
+@use "../../../assets/scss/mixin" as m;
+@use "../../../assets/scss/variables" as v;
+
+.container{
+    position: relative;
+    margin-top: 200px;
+}
+
+h1{
+    @include m.contentTitle(v.$darkPink);
+    margin-bottom: 70px;
+}
+
+h2{
+    @include m.contentTitle(v.$green);
+    margin-bottom: 30px;
+}
+
+p{
+    font-family: v.$Patrick;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    line-height: 120%;
+}

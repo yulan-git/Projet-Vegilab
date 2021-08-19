@@ -17,7 +17,7 @@
     </div>
                 <div class="list-menu" appDropdown>
                     <ul id="nav-menu">
-                        <li class="nav-item"  routerLinkActive="active" [ngStyle]="isAuthenticatedAsAdmin() && {'display': 'none'}">
+                        <li class="nav-item"  routerLinkActive="active">
                             <a href="#" class="nav-link" [routerLink]="['/home']" routerLinkActive="activeLink">Accueil</a>
                         </li>
                         <li class="nav-item" routerLinkActive="active">
@@ -26,13 +26,13 @@
                         <li class="nav-item">
                             <a href="#" class="nav-link" [routerLink]="['/planning']" routerLinkActive="activeLink">Planning de la semaine</a>
                         </li>
-                        <li class="nav-item"  *ngIf="!isAuthenticated()">
+                        <li class="nav-item" *ngIf="!isAuthenticated()">
                             <a href="#" class="nav-link" [routerLink]="['login']">Connexion</a>
                         </li>
                         <li class="nav-item"  *ngIf="isAuthenticated()">
                             <a href="#" class="nav-link" [routerLink]="['/welcome-home']" routerLinkActive="activeLink">Général</a>
                         </li>
-                        <li class="nav-item"  *ngIf="isAuthenticatedAsAdmin()">
+                        <li class="nav-item gestion" [ngStyle]="isAuthenticatedAsAdmin() && isAuthenticated() && {'display': 'block'}">
                             <a href="#" class="nav-link" [routerLink]="['/dashboard']" routerLinkActive="activeLink">Gestion</a>
                         </li>
                         <li class="nav-item" *ngIf="isAuthenticated()">

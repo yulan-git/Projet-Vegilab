@@ -11,6 +11,19 @@ table{
     margin-top: 10%;
     border: solid 1px v.$darkPink;
     border-radius: 5px;
+    text-align: center;
+}
+
+th{
+    padding: 10px 50px;
+    background-color: v.$darkPink;
+    border: solid 1px v.$darkPink;
+    border-radius: 3px;
+    margin: 0 20px;
+    font-family: v.$Patrick;
+    font-size: 1.5rem;
+    color: v.$lightRose;
+    
 }
 
 td{
@@ -21,4 +34,8 @@ td{
     font-family: v.$Patrick;
     font-size: 1.5rem;
     
+}
+
+.icons{
+    cursor: pointer;
 }

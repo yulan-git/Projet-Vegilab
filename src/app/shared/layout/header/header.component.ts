@@ -23,7 +23,8 @@ menuLinks = ['Accueil', 'Recettes', 'Planning de la semaine', 'Connexion']
     return this.authService.isAuthenticated();
   }
 
-  isAuthenticatedAsAdmin(){
+  isAuthenticatedAsAdmin() {
+    //document.querySelector<HTMLElement>('.gestion').style.display = 'block';
     return this.authService.isAuthenticatedAsAdmin();
   }
 
