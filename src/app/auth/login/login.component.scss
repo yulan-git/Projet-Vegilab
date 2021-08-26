@@ -1,6 +1,7 @@
 @use "../../../assets/scss/mixin" as m;
 @use "../../../assets/scss/variables" as v;
 @import "../../../assets/scss/login-signup";
+@import "../../../assets/scss/validation-form";
 
 .login-input{
   @include m.formInput();
@@ -11,6 +12,7 @@
   margin-top: -50px;
   margin-left: 595px;
 }
+
 
 @media (max-width: 1200px) {
   #eye-icon{

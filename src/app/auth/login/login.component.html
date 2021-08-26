@@ -7,7 +7,8 @@
                 </a>
             </div>
             <div class="login-text">
-                <h2>Connectez-vous</h2>
+                <h1 class="title-content">Connectez-vous</h1>
+                <!-- <span>Inscription réussite !</span> -->
                 <form
                 (ngSubmit)='onSubmit(loginForm)'
                 #loginForm='ngForm'
@@ -20,7 +21,12 @@
                         class="login-input"
                         name="username"
                         ngModel
-                        required>
+                        required
+                        #username="ngModel"
+                        >
+                    </div>
+                    <div *ngIf="username.invalid && (username.dirty || username.touched)">
+                        <div *ngIf="username.errors?.required">Le pseudonyme est requis</div>
                     </div>
                     <div>
                         <input 
@@ -30,7 +36,9 @@
                         class="login-input"
                         name="password"
                         ngModel
-                        required>
+                        required
+                        #password="ngModel"
+                        >
                         <div id="eye-icon" (click)="showPassword(loginForm)">
                             <svg *ngIf="eyeIcon" [style.display]="'block'" width="22" height="16" viewBox="0 0 22 16" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -56,8 +64,11 @@
                                     stroke="#B34454" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
+                        <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                            <div *ngIf="password.errors?.required">Le mot de passe est requis</div>
+                        </div>
                     </div>
-                    <div class="login-memory">
+                    <!-- <div class="login-memory">
                         <div>
                             <input type="checkbox" name="memory" id="memory">
                             <label for="memory" id="memory-label">Se souvenir de moi</label>
@@ -65,8 +76,8 @@
                         <div id="login-forget">
                             <a href="" id="password-forget">Mot de passe oublié</a>
                         </div>
-                    </div>
-                    <button type="submit" id="login-button">Valider</button>
+                    </div>-->
+                    <button type="submit" id="login-button" [disabled]="!loginForm.valid">Valider</button>
                 </form>
                 <div class="login-separator"></div>
                 <p id="else">Sinon</p>

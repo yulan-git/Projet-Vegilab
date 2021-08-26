@@ -1,5 +1,5 @@
 import { formatDate } from '@angular/common';
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Input } from '@angular/core';
 import { Component, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -28,13 +28,13 @@ export class RecipeFormComponent implements OnInit {
   currentUploadUrl?: string;
   percentage = 0;
 
-  categories: Category[];
-  costs: Cost[];
+  category: Category[];
+  cost: Cost[];
   currentUsername: string;
   currentUserId: number;
   currentDate: string;
 
-  difficulties: Difficulty[];
+  difficulty: Difficulty[];
 
   haveStep: boolean = false;
 
@@ -46,9 +46,10 @@ export class RecipeFormComponent implements OnInit {
   ingredientList: {};
   ingrMap: Map<string, number>;
   imagePath: any;
+  isSubmitted: boolean;
 
   newRecipe: any;
-  nbPerson: number;
+  nbrPerson: number;
 
   recipeForm: FormGroup;
   recipeList: Recipe[];
@@ -103,15 +104,15 @@ export class RecipeFormComponent implements OnInit {
 
   initForm() {
     this.recipeForm = new FormGroup({
-      name: new FormControl(''),
-      description: new FormControl(''),
-      preparationTime: new FormControl(),
-      cookingTime: new FormControl(),
-      difficulties: new FormControl(''),
-      ingredientsList: new FormControl({}),
-      categories: new FormControl([]),
-      costs: new FormControl(''),
-      nbPerson: new FormControl(),
+      name: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
+      preparationTime: new FormControl(null, [Validators.required]),
+      cookingTime: new FormControl(null, [Validators.required]),
+      difficulties: new FormControl('', [Validators.required]),
+      ingredientsList: new FormControl({}, [Validators.required]),
+      categories: new FormControl([], [Validators.required]),
+      costs: new FormControl('', [Validators.required]),
+      nbPerson: new FormControl(null, [Validators.required]),
       steps: new FormControl([]),
       image: new FormControl('')
     });
@@ -143,6 +144,34 @@ export class RecipeFormComponent implements OnInit {
       });
     }
   }
+
+  get name() {
+    return this.recipeForm.get("name")
+  }
+  get description() {
+    return this.recipeForm.get("description")
+  }
+  get preparationTime() {
+    return this.recipeForm.get("preparationTime")
+  }
+  get cookingTime() {
+    return this.recipeForm.get("cookingTime")
+  }
+  get difficulties(){
+    return this.recipeForm.get('difficulties');
+  }
+  get categories(){
+    return this.recipeForm.get('categories');
+  }
+  get costs(){
+    return this.recipeForm.get('costs');
+  }
+  get nbPerson(){
+    return this.recipeForm.get('nbPerson');
+  }
+
+
+
   getUser() {
     this.currentUserId = this.authService.getUserId();
     this.currentUsername = this.authService.getUserUsername();
@@ -153,7 +182,7 @@ export class RecipeFormComponent implements OnInit {
     console.log(ingredient);
     
     this.isAdded = true;
-    this.nbPerson = nbPerson;
+    this.nbrPerson = nbPerson;
     this.ingrMap.set(ingredient, amount);
   }
 
@@ -229,6 +258,7 @@ export class RecipeFormComponent implements OnInit {
   }
 
   onSubmit() {
+    
     this.mapToObject(this.ingrMap, this.ingredientList);
     this.mapToObject(this.userMap, this.user);
     this.imagePath = document.querySelector('#imagePath').textContent;
@@ -270,13 +300,17 @@ export class RecipeFormComponent implements OnInit {
     console.log(this.newRecipe);
     console.log(this.recipeToModify);
     
-
-    if (this.isCreateMode) {
-      this.createRecipe();
+    if (this.steps.length != 0 && this.ingrMap != null) {
+      if (this.isCreateMode) {
+        this.createRecipe();
+      } else {
+        this.updateRecipe();
+      }
     } else {
-      this.updateRecipe();
+      return false;
     }
-  }
+  
+}
   
   private createRecipe() {
     this.recipeService.createRecipe(this.newRecipe).subscribe((resp: any) => {
@@ -286,28 +320,27 @@ export class RecipeFormComponent implements OnInit {
   }
 
   private updateRecipe() {
-
     this.recipeService.updateRecipe(this.recipeToModify).subscribe((resp: any) => {
       console.log('Recette modifiée');
     })
-    this.router.navigate(['welcome-home']);
+    this.router.navigate(['recettes-publiees']);
   }
 
   
   getDifficultiesList() {
     this.selectService.getAllDifficulties().subscribe(resp => {
-      this.difficulties = resp;
+      this.difficulty = resp;
     })
   }
 
   getCostsList() {
     this.selectService.getAllCosts().subscribe(resp => {
-      this.costs = resp;
+      this.cost = resp;
     })
   }
   getCategoriesList() {
     this.selectService.getAllCategories().subscribe(resp => {
-      this.categories = resp;
+      this.category = resp;
     })
   }
 

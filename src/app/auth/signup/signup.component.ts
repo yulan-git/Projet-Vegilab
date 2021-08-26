@@ -12,6 +12,8 @@ export class SignupComponent implements OnInit {
   showPwd: boolean = false;
   eyeIcon: boolean = true;
   signupForm: FormGroup;
+  pwdPattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+
 
   constructor(private router: Router,
   private authService: AuthService) {
@@ -24,10 +26,20 @@ export class SignupComponent implements OnInit {
 
   initForm() {
     this.signupForm = new FormGroup({
-      username: new FormControl('yulan', [Validators.required]),
-      email: new FormControl('yulan@mail.com', [Validators.required, Validators.email]),
-      password: new FormControl('Yulan02?', [Validators.required, Validators.minLength(8)])
+      username: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(this.pwdPattern)])
     })
+  }
+
+  get username() {
+    return this.signupForm.get("username")
+  }
+  get email() {
+    return this.signupForm.get("email")
+  }
+  get password() {
+    return this.signupForm.get("password")
   }
 
 
@@ -36,7 +48,6 @@ export class SignupComponent implements OnInit {
       const user = {
         username: this.signupForm.value.username,
         email: this.signupForm.value.email,
-        role: ["USER"],
         password: this.signupForm.value.password
       }
       this.authService.signup(user).subscribe((response) => {

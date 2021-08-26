@@ -1,0 +1,26 @@
+@use "./mixin" as m;
+@use "./variables" as v;
+
+.ng-valid[required], .ng-valid.required  {
+  border: 2px solid v.$green;
+}
+
+.login-input.ng-invalid:not(loginForm)  {
+  border: 1px solid red;
+}
+
+.name-input.ng-invalid:not(recipeForm), #description.ng-invalid:not(recipeForm), #visualisation-etapes.ng-invalid:not(recipeForm)  {
+  border: 1px solid v.$green;
+
+}
+
+#login-button:disabled, .form-button:disabled{
+  background-color: v.$lightYellow;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.alert-text{
+    color:red;
+    font-family: v.$Caveat;
+}

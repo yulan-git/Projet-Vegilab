@@ -35,8 +35,4 @@ export class InlineRecipeComponent implements OnInit {
     });
   }
 
-  onUpdateRecipe() {
-
-  }
-
 }

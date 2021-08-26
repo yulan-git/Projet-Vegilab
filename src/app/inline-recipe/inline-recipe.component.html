@@ -25,6 +25,9 @@
         <span *ngIf="recipesList.length == 0" class="content-info">
             Vous n'avez aucune publication en ligne
         </span>
+        <!-- <span ngclass="content-info">
+            Recette modifiée avec succès !
+        </span> -->
     <div class="inline-content">
         <div class="cards-content" *ngFor="let recipe of recipesList; let i = index">
             <app-recipe-card

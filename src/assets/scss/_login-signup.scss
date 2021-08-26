@@ -8,6 +8,10 @@
     height: 100%;
 }
 
+.title-content{
+    @include m.contentTitle(v.$lightRose);
+}
+
 .login-container{
     background: url('../../assets/img/login-background-xxl.jpg');
     box-shadow: 0px 10px 12px v.$darkPink;

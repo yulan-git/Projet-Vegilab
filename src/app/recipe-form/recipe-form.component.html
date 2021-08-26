@@ -17,9 +17,11 @@
                 <li>
                     <label for="name">Nommer votre recette </label>
                     <input type="text" class="name-input" formControlName="name">
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                        <div *ngIf="name.errors?.required" class="alert-text">Ce champ est requis</div>
+                    </div>
                 </li>
                 <li>Choisir une image</li>
-
                 <div id="upload">
                     <label for="file">
                         <input type="file" id="choose-button" (change)="selectFile($event)" />
@@ -32,10 +34,10 @@
                             <div id="imagePath" *ngIf="currentFileUpload">{{currentFileUpload.url}}</div>
                     </div>
                 </div>
-
                 <button *ngIf="selectedFiles" class="form-button" [disabled]="!selectedFiles" (click)="upload()">
                     Valider
                 </button>
+
                 <div *ngIf="currentFileUpload" class="progress mt-2">
                     <div class="progress-bar" role="progressbar" attr.aria-valuenow="{{ percentage }}" aria-valuemin="0"
                         aria-valuemax="100" [ngStyle]="{ width: percentage + '%' }">
@@ -44,31 +46,47 @@
                 </div>
                 <li>Ajouter une description</li>
                 <textarea name="" id="description" cols="30" rows="5" formControlName="description"></textarea>
+                <div *ngIf="description.invalid && (description.dirty || description.touched)">
+                    <div *ngIf="description.errors?.required" class="alert-text">Ce champ est requis</div>
+                </div>
                 <li>Sélectionner les caractéristiques</li>
                 <div class="ajout">
-                    <label for="preparationTime">Temps de préparation</label>
+                    <label for="preparationTime">Temps de préparation*</label>
                     <input type="number" step="5" id="preparationTime" min="0" formControlName="preparationTime">
+                    <div *ngIf="preparationTime.invalid && (preparationTime.dirty || preparationTime.touched)">
+                        <div *ngIf="preparationTime.errors?.required" class="alert-text">Ce champ est requis</div>
+                    </div>
                 </div>
                 <div class="ajout">
-                    <label for="cookingTime">Temps de cuisson</label>
+                    <label for="cookingTime">Temps de cuisson*</label>
                     <input type="number" step="5" id="cookingTime" min="0" formControlName="cookingTime">
+                    <div *ngIf="cookingTime.invalid && (cookingTime.dirty || cookingTime.touched)">
+                        <div *ngIf="cookingTime.errors?.required" class="alert-text">Ce champ est requis</div>
+                    </div>
                 </div>
                 <div class="input-group">
                     <select class="select-elements" formControlName="difficulties">
                         <option value="" disabled selected>Difficulté</option>
-                        <option *ngFor="let difficulty of difficulties" [ngValue]="difficulty.id">{{difficulty.name}}
+                        <option *ngFor="let diff of difficulty" [ngValue]="diff.id">{{diff.name}}
                         </option>
                     </select>
                     <select class="select-elements" formControlName="categories" multiple id="select-categories">
                         <option value="" disabled selected>Catégories</option>
-                        <option *ngFor="let category of categories" [ngValue]="category.name">{{category.name}}
+                        <option *ngFor="let cat of category" [ngValue]="cat.name">{{cat.name}}
                         </option>
                     </select>
+
                     <select class="select-elements" formControlName="costs">
                         <option value="" disabled selected>Coût</option>
-                        <option *ngFor="let cost of costs" [ngValue]="cost.id">{{cost.name}}
+                        <option *ngFor="let co of cost" [ngValue]="co.id">{{co.name}}
                         </option>
                     </select>
+                </div>
+                <div *ngIf="difficulties.invalid && (difficulties.dirty || difficulties.touched)">
+                    <div *ngIf="difficulties.errors?.required" class="alert-text">Le champ "difficulté" est requis</div>
+                </div>
+                <div *ngIf="costs.invalid && (costs.dirty || costs.touched)">
+                    <div *ngIf="costs.errors?.required" class="alert-text">Le champ "coût" est requis</div>
                 </div>
                 <li>Ajouter les ingrédients en fonction du nombre de personne</li>
                 <div class="ajout">
@@ -136,7 +154,10 @@
                 </div>
             </ol>
             <div id="form-btn">
-                <button class="form-button">Valider</button>
+                <div [ngStyle]="this.steps.length != 0 && this.ingrMap != null && {'display': 'none'}">
+                    <div class="alert-text">Tous les champs sont requis</div>
+                </div>
+                <button class="form-button" [disabled]="!recipeForm.valid">Valider</button>
             </div>
         </form>
     </div>
