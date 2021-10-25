@@ -1,6 +1,9 @@
 {
   "name": "projet-vegilab",
   "version": "0.0.0",
+   "engines": {
+    "node": "14.14.0"
+  },
   "scripts": {
     "ng": "ng",
     "heroku-postbuild":"ng builg --prod && npm install - g http-server-spa",
