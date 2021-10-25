@@ -5,11 +5,11 @@ const path = require('path');
 const app = express();
 
 // Serve only the static files form the dist directory
-app.use(express.static('./dist/angular-app-heroku'));
+app.use(express.static('./dist/spring-angular-vegilab'));
 
 app.get('/*', (req, res) =>
     res.sendFile('index.html', {
-        root: 'dist/angular-app-heroku/'
+        root: 'dist/spring-angular-vegilab/'
     }),
 );
 
