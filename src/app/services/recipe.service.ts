@@ -36,7 +36,6 @@ export class RecipeService {
       this.recipeSubject.next(resp)
     })
   }
-  
 
   createRecipe(recipe: Recipe) {
     return this.http.post<Recipe>(`${this.API_URL}/recipes`, recipe).pipe(
@@ -52,13 +51,6 @@ export class RecipeService {
     return this.http.put<Recipe>(`${this.API_URL}/recipes/update`, recipe).pipe(
       catchError(error => of([])))
   }
-
-  // updateRecipe(formData: FormData) {
-  //   return this.http
-  //     .put<Recipe>(`${this.API_URL} / update`, formData)
-  //     .pipe(
-  //       catchError(error => of([])))
-  // }
 
   addCostInRecipe(id: number, cost: Cost) {
     return this.http.post<Cost>(`${this.API_URL}/recipes/${id}/cost`, cost);

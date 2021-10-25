@@ -62,10 +62,6 @@ export class RecipeFormComponent implements OnInit {
   user: {};
   userMap: Map<string, number>;
 
-  times = [
-    '- de 20min', 'entre 20-40min', 'entre 40-60min', '+ de 60min'
-  ]
-
   placeholder: string = 'Sélectionnez votre indrédient';
   keyword = 'name';
   historyHeading: string = 'Récemment sélectionné';
@@ -276,7 +272,7 @@ export class RecipeFormComponent implements OnInit {
       ingredientsList: this.ingredientList,
       datePublication: this.currentDate,
       steps: this.steps,
-      user: this.user,
+      userNameAndId: this.user,
       image: this.imagePath
     }
 
@@ -293,7 +289,7 @@ export class RecipeFormComponent implements OnInit {
       ingredientsList: this.ingredientList,
       datePublication: this.currentDate,
       steps: this.steps,
-      user: this.user,
+      userNameAndId: this.user,
       image: this.imagePath
     }
 
@@ -322,6 +318,7 @@ export class RecipeFormComponent implements OnInit {
   private updateRecipe() {
     this.recipeService.updateRecipe(this.recipeToModify).subscribe((resp: any) => {
       console.log('Recette modifiée');
+      this.recipeService.getRecipesByUserId(this.currentUserId);
     })
     this.router.navigate(['recettes-publiees']);
   }

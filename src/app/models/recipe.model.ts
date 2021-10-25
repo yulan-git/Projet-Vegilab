@@ -18,5 +18,5 @@ export interface Recipe{
     categories?: String[],
     cost?: Cost,
     difficulty?: Difficulty,
-    user?: { [username: string]: number }
+    userNameAndId?: { [username: string]: number }
 }

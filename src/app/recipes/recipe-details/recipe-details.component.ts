@@ -23,9 +23,11 @@ export class RecipeDetailsComponent implements OnInit {
         this.id = +params['id'];
         console.log(this.id);
         this.recipeService.getRecipe(this.id).subscribe(resp => {
-          this.recipe = resp;
-          this.createdBy = String(Object.keys(this.recipe.user));
-          console.log(this.createdBy);
+        
+        this.recipe = resp;
+        console.log(this.recipe);
+        this.createdBy = String(Object.keys(this.recipe.userNameAndId));
+        console.log(this.createdBy);
         })
       }
     )

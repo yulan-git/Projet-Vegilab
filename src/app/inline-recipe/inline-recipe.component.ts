@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Recipe } from '../models/recipe.model';
 import { AuthService } from '../services/auth.service';
@@ -9,7 +9,7 @@ import { RecipeService } from '../services/recipe.service';
   templateUrl: './inline-recipe.component.html',
   styleUrls: ['./inline-recipe.component.scss']
 })
-export class InlineRecipeComponent implements OnInit {
+export class InlineRecipeComponent implements OnInit, OnDestroy {
   recipesList: Recipe[] = [];
   currentUserId: number;
   recipes: Recipe[];
@@ -33,6 +33,10 @@ export class InlineRecipeComponent implements OnInit {
       console.log('la recette  a bien été supprimée');
       this.recipeService.getRecipesByUserId(this.currentUserId);
     });
+  }
+
+  ngOnDestroy() {
+    this.recipeSub.unsubscribe();
   }
 
 }
